@@ -379,3 +379,28 @@ outerLoop: for option1 in options {
         }
     }
 }
+
+
+// ## How to provide default values for parameters
+
+
+func printTimesTablesDefaults(for number: Int, end: Int = 12) {
+    for i in 1...end {
+        print("\(i) x \(number) is \(i * number)")
+    }
+}
+
+printTimesTablesDefaults(for: 5, end: 20)
+printTimesTablesDefaults(for: 8)
+
+
+var characters = ["Lana", "Pam", "Ray", "Sterling"]
+print(characters.count)
+characters.removeAll()
+print(characters.count)
+
+// to preserve capacity of the array
+characters.removeAll(keepingCapacity: true)
+
+
+// ## How to handle errors in functions
