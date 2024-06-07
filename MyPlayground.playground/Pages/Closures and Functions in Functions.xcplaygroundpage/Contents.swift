@@ -31,7 +31,7 @@ import Foundation
  */
 
 func greetUser() {
-    print("Hi there!")
+    print("Greet User: Hi there!")
 }
 
 greetUser()
@@ -40,6 +40,11 @@ var greetCopyFunction = greetUser
 greetCopyFunction()
 
 
+
+greetUser()
+
+var greetCopy777: () -> Void = greetUser
+greetCopy777()
 
 
 /*:
@@ -51,7 +56,7 @@ greetCopyFunction()
 
 
 let sayHello2 = {
-    print("Hi there!")
+    print("Say Hello 2: Hi there!")
 }
 
 sayHello2()
@@ -81,7 +86,7 @@ print("---------")
  */
 print("---------")
 func greetTheUser() {
-    print("Hi there!")
+    print("Greet The User: Hi there!")
 }
 /*:
  THIS!  : () -> Void =
@@ -90,10 +95,15 @@ func greetTheUser() {
  (2) arrow, means we are about to declare return type\
  (3) void - means it returns no value. Void and Open/Close Parens means the same thing.\
  
+ ------------------------------
  */
 
 
 var greetTheUserCopy: () -> Void = greetTheUser
+
+
+
+
 
 /*:
  Every function’s type depends on the data it receives and sends back. That might sound simple, but it hides an important catch: the names of the data it receives are not part of the function’s type.
@@ -148,6 +158,57 @@ func captainFirstSorted(name1: String, name2: String) -> Bool {
 
     return name1 < name2
 }
+// ----------------------
+// since sorted EXPECTS the input of 2 strings and returns a bool, we can write;
+
+let captainFTeam = team.sorted { name1, name2 in
+    if name1 == "Suzanne" {
+        return true
+    } else if name2 == "Suzanne" {
+        return false
+    }
+
+    return name1 < name2
+}
+
+/*:
+ Rather than passing the closure in as a parameter to team.sorted(by: xxx) , we just go ahead and start the closure directly – and in doing so remove (by: from the start, and a closing parenthesis at the end.
+ 
+ Swift can also shorthand the input params
+ 
+ let captainFirstTeam = team.sorted {
+     if $0 == "Suzanne" {
+         return true
+     } else if $1 == "Suzanne" {
+         return false
+     }
+
+     return $0 < $1
+ }
+ 
+ EVEN SIMPLER::::
+ 
+ 
+ let reverseTeam = team.sorted {
+     return $0 > $1
+ }
+ 
+ 
+ Or even SIMPLER!!! -------->
+ */
+let reverseTeam = team.sorted { $0 > $1 }
+
+
+print("t Only")
+let tOnly = team.filter { $0.hasPrefix("T") }
+print(tOnly)
+
+/*:
+ the map() function lets us transform every item in the array using some code of our choosing, and sends back a new array of all the transformed items:
+ */
+let uppercaseTeam = team.map { $0.uppercased() }
+print(uppercaseTeam)
+
 
 /*:
  So, if the first name is Suzanne, return true so that name1 is sorted before name2. On the other hand, if name2 is Suzanne, return false so that name1 is sorted after name2. If neither name is Suzanne, just use < to do a normal alphabetical sort.
@@ -187,3 +248,181 @@ print(descendingStudents)
 // Prints "["Peter", "Kweku", "Kofi", "Akosua", "Abena"]"
 
 
+    /*:
+     
+     Let’s start with a simple example first. Here’s a function that accepts a Double then a closure full of changes to make:
+     
+     
+     
+ 
+     ANIMATIONS() closure is an input param.
+     
+     */
+func animate(duration: Double, animations: () -> Void) {
+    print("Starting a \(duration) second animation…")
+    animations()
+    print("Animation complete…")
+}
+
+animate(duration: 3, animations: {
+    print("Fade out the image")
+})
+
+// simplified
+
+print("-----------")
+
+animate(duration: 3) {
+    print("Fade out the image")
+}
+
+/*:
+-----------------------------------------------------------
+ make Array takes 2 inputs, a size integer and a Generator function
+  this is the FUNCTION:    using generator: () -> Int
+ 
+ No input params but returns integer
+ 
+ Repeatedly call the generator function and add it to the array
+ */
+
+func makeArray(size: Int, using generator: () -> Int) -> [Int] {
+    var numbers = [Int]()
+
+    for _ in 0..<size {
+        let newNumber = generator()
+        numbers.append(newNumber)
+    }
+
+    return numbers
+}
+
+
+// ----
+
+let rolls = makeArray(size: 50) {
+    Int.random(in: 1...20)
+}
+print("-----< Rolls > -----")
+
+print(rolls)
+
+
+
+// ----
+
+
+func generateNumber() -> Int {
+    Int.random(in: 1...20)
+}
+
+let newRolls = makeArray(size: 50, using: generateNumber)
+
+print("---< New Rolls >-------")
+print(newRolls)
+
+
+// ---- This function calls functions
+func doImportantWork(first: () -> Void, second: () -> Void, third: () -> Void) {
+    print("About to start first work")
+    first()
+    print("About to start second work")
+    second()
+    print("About to start third work")
+    third()
+    print("Done!")
+}
+
+
+/*:
+ 
+ You can also write it like this, with 3 trailing closures;
+ 
+ doImportantWork {
+     print("This is the first work")
+ } second: {
+     print("This is the second work")
+ } third: {
+     print("This is the third work")
+ }
+ 
+ 
+ 
+ */
+
+
+
+// Passing a valid closure into a function
+
+
+let awesomeTalk = {
+    print("Here's a great talk!")
+}
+func deliverTalk(name: String, type: () -> Void) {
+    print("My talk is called \(name)")
+    type()
+}
+deliverTalk(name: "My Awesome Talk", type: awesomeTalk)
+
+
+// valid code:
+
+let swanDive = {
+    print("SWAN DIVE!")
+}
+func performDive(type dive: () -> Void) {
+    print("I'm climbing up to the top")
+    dive()
+}
+performDive(type: swanDive)
+
+
+// valid swift
+
+let helicopterTravel = {
+    print("Get to the chopper!")
+}
+func travel(by travelMeans: () -> Void) {
+    print("Let's go on vacation...")
+    travelMeans()
+}
+travel(by: helicopterTravel)
+
+
+//valid swift
+
+let evilRobot = {
+    print("EXTERMINATE")
+}
+func buildRobot(personality: () -> Void) {
+    print("Time to turn on the robot!")
+    personality()
+}
+buildRobot(personality: evilRobot)
+
+
+// valid swift
+
+var payCash = {
+    print("Here's the money.")
+}
+func buyClothes(item: String, using payment: () -> Void) {
+    print("I'll take this \(item).")
+    payment()
+}
+buyClothes(item: "jacket", using: payCash)
+
+
+
+// this is INCORRECT. It shoudl NOT return a string
+
+let driveSafely = {
+   // return "I'm being a considerate driver"
+    print("I'm driving safely")
+}
+func drive(using driving: () -> Void) {
+    print("Let's get in the car")
+    driving()
+    print("We're there!")
+}
+drive(using: driveSafely)
