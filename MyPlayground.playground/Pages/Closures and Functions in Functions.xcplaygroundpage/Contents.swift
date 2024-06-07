@@ -38,9 +38,6 @@ greetUser()
 
 var greetCopyFunction = greetUser
 greetCopyFunction()
-
-
-
 greetUser()
 
 var greetCopy777: () -> Void = greetUser
@@ -65,7 +62,8 @@ sayHello2()
 
  ## ACCEPTING PARAMETERS
  
- If you want the closure to accept parameters, they need to be written in a special way. You see, the closure starts and ends with the braces, which means we can’t put code outside those braces to control parameters or return value. So, Swift has a neat workaround: we can put that same information inside the braces, like this:
+ If you want the closure to accept parameters, they need to be written in a special way.
+ The closure starts and ends with the braces, which means we can’t put code outside those braces to control parameters or return value. So, Swift has a  workaround: we can put that same information inside the braces, like this:
  
     > They keyword 'in' marks the end of the params (input/return) and the start of the closure
  */
@@ -75,7 +73,6 @@ let sayHello3 = { (name: String) -> String in
     "Hi \(name)!"
 }
 
-//sayHello3("Taylor")
 print (sayHello3("Taylor"))
 print("---------")
 /*:
@@ -98,11 +95,7 @@ func greetTheUser() {
  ------------------------------
  */
 
-
 var greetTheUserCopy: () -> Void = greetTheUser
-
-
-
 
 
 /*:
@@ -112,6 +105,7 @@ The following is a function that accepts an integer and returns a string.
  */
 
 //  -> means returns .. String (in this case)
+
 func getUserData(for id: Int) -> String {
     if id == 1989 {
         return "Taylor Swift"
@@ -206,6 +200,7 @@ print(tOnly)
 /*:
  the map() function lets us transform every item in the array using some code of our choosing, and sends back a new array of all the transformed items:
  */
+ 
 let uppercaseTeam = team.map { $0.uppercased() }
 print(uppercaseTeam)
 
@@ -243,6 +238,7 @@ print(captainFirstTeam)
 
 // an example using the default 'by'
 let students: Set = ["Kofi", "Abena", "Peter", "Kweku", "Akosua"]
+
 let descendingStudents = students.sorted(by: >)
 print(descendingStudents)
 // Prints "["Peter", "Kweku", "Kofi", "Akosua", "Abena"]"
@@ -252,9 +248,6 @@ print(descendingStudents)
      
      Let’s start with a simple example first. Here’s a function that accepts a Double then a closure full of changes to make:
      
-     
-     
- 
      ANIMATIONS() closure is an input param.
      
      */
@@ -345,9 +338,7 @@ func doImportantWork(first: () -> Void, second: () -> Void, third: () -> Void) {
  } third: {
      print("This is the third work")
  }
- 
- 
- 
+
  */
 
 
@@ -426,3 +417,60 @@ func drive(using driving: () -> Void) {
     print("We're there!")
 }
 drive(using: driveSafely)
+
+
+// valid swift
+
+
+var learnWithUnwrap = {
+    print("Hey, this is fun!")
+}
+func learnSwift(using approach: () -> Void) {
+    print("I'm learning Swift")
+    approach()
+}
+learnSwift(using: learnWithUnwrap)
+
+
+
+// this is valid swift
+
+
+func tendGarden(activities: () -> Void) {
+    print("I love gardening")
+    activities()
+}
+tendGarden {
+    print("Let's grow some roses!")
+}
+
+
+
+// valid swift
+
+func goCamping(then action: () -> Void) {
+    print("We're going camping!")
+    action()
+}
+goCamping {
+    print("Sing songs")
+    print("Put up tent")
+    print("Attempt to sleep")
+}
+
+
+
+// valid swift, no idea what the undersscore does
+
+
+func goOnVacation(to destination: String, _ activities: () -> Void) {
+print("Packing bags...")
+print("Getting on plane to \(destination)...")
+activities()
+print("Time to go home!")
+}
+goOnVacation(to: "Mexico") {
+    print("Go sightseeing")
+    print("Relax in sun")
+    print("Go hiking")
+}
