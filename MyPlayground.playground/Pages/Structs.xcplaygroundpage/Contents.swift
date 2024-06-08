@@ -382,3 +382,27 @@ var myCar = Car(numSeats: 2, currentGear: 2)
 print(myCar.currentGear)
 print(myCar.shiftGear(newGear: 4))
 
+
+
+// Last Exampls:
+
+struct Dictionary {
+    var words = Set<String>()
+}
+let dictionary = Dictionary()
+
+
+
+struct Country {
+    var name: String
+    var usesImperialMeasurements: Bool
+    init(countryName: String) {
+        name = countryName
+        let imperialCountries = ["Liberia", "Myanmar", "USA"]
+        if imperialCountries.contains(name) {
+            usesImperialMeasurements = true
+        } else {
+            usesImperialMeasurements = false
+        }
+    }
+}
