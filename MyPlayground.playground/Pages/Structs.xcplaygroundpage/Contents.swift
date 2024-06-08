@@ -213,3 +213,59 @@ if success {
     print("Failed to get the money")
 }
 
+
+
+// With private variables, you need to initiate yoru struct. For Example
+
+
+struct SecretAgent {
+    private var actualName: String
+    public var codeName: Int
+    init(name: String, codeName: Int) {
+        self.actualName = name
+        self.codeName = codeName
+    }
+}
+let bond = SecretAgent(name: "James Bond", codeName: 007)
+
+
+// valid
+struct Appl {
+    var name: String
+    private var sales = 0
+    init(name: String) {
+        self.name = name
+    }
+}
+let spotify = Appl(name: "Spotify")
+
+// valid
+struct Contributor {
+    private var name = "Anonymous"
+}
+let paul = Contributor()
+
+
+// valid
+
+struct School {
+    var staffNames: [String]
+    private var studentNames: [String]
+    init(staff: [String]) {
+        self.staffNames = staff
+        self.studentNames = [String]()
+    }
+}
+let royalHigh = School(staff: ["Mrs Hughes"])
+
+/*:
+ This is incorrect.It has a private member variable so Swift is unable to initialize
+ 
+ struct Doctor {
+     var name: String
+     var location: String
+     private var currentPatient = "No one"
+ }
+ let drJones = Doctor(name: "Esther Jones", location: "Bristol")
+ */
+
