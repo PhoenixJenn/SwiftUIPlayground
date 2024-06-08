@@ -1,6 +1,18 @@
 /*:  [Previous](@previous)    [HOME](Introduction)          [Next](@next)
  
  # Structs
+ * Member Constants/Variables
+ * Mutating Methods
+ * Setters and Getters
+ * didSet, willSet
+ * Instantiation
+*  Private Members + Instantiation rules
+ * Static Properties and Methods
+ 
+ 
+ https://www.hackingwithswift.com/quick-start/beginners/summary-structs
+ 
+ 
 */
 
 import Foundation
@@ -51,9 +63,6 @@ wings.printSummary()
  
   func takeVacation(days: Int) { // <---- this is NOT OK in Swift.
  */
-
-
-
 
 
 struct Employee {
@@ -213,9 +222,7 @@ if success {
     print("Failed to get the money")
 }
 
-
-
-// With private variables, you need to initiate yoru struct. For Example
+// With private variables, you need to initiate your struct. For Example
 
 
 struct SecretAgent {
@@ -268,4 +275,110 @@ let royalHigh = School(staff: ["Mrs Hughes"])
  }
  let drJones = Doctor(name: "Esther Jones", location: "Bristol")
  */
+
+// Static Properties and Methods
+// https://www.hackingwithswift.com/quick-start/beginners/static-properties-and-methods
+// in the following example, both studentCount and add method belong to the struct itself, not to an individual instance of a high school.
+struct HighSchool {
+    static var studentCount = 0
+
+    static func add(student: String) {
+        print("\(student) joined our regional highschools.")
+        studentCount += 1
+    }
+}
+
+HighSchool.add(student: "Archie Andrews")
+print(HighSchool.studentCount)
+
+// in an instance, you can read static information
+
+/*:
+ To access static code from non-static code, always use your type’s name such as School.studentCount. You can also use Self to refer to the current type.
+ Now we have self and Self, and they mean different things: self refers to the current value of the struct, and Self refers to the current type.
+ */
+
+
+// use static data to organize your cose. The beauty is that you don't have to instantiate it to use the static variables.
+
+struct AppData {
+    static let version = "1.3 beta 2"
+    static let saveFilename = "settings.json"
+    static let homeURL = "https://www.hackingwithswift.com"
+}
+print(AppData.version)
+
+// example for struct
+
+struct CastMember {
+    let username: String
+    let password: String
+
+    static let example = CastMember(username: "waltdisney", password: "cyar3als00n")
+}
+print(CastMember.example)
+
+print(CastMember.self)
+
+
+// some valid examples
+
+struct NewsStory {
+    static var breakingNewsCount = 0
+    static var regularNewsCount = 0
+    var headline: String
+    init(headline: String, isBreaking: Bool) {
+        self.headline = headline
+        if isBreaking {
+            NewsStory.breakingNewsCount += 1
+        } else {
+            NewsStory.regularNewsCount += 1
+        }
+    }
+}
+
+
+// make sure to use the Struct to access population
+
+struct Person {
+    static var population = 0
+    var name: String
+    init(personName: String) {
+        name = personName
+        Person.population += 1
+    }
+}
+
+
+/*:
+ # CHECKPOINT
+ 
+ create a struct to store information about a car, including its model, number of seats, and current gear, then add a method to change gears up or down. Have a think about variables and access control: what data should be a variable rather than a constant, and what data should be exposed publicly? Should the gear-changing method validate its input somehow?
+ */
+
+struct Car {
+    static let make = "BMW"
+    static let model = "3 Series"
+    let numSeats: Int
+    private(set) var currentGear: Int
+    
+    init(numSeats: Int, currentGear: Int) {
+        self.numSeats = numSeats
+        self.currentGear = currentGear
+    }
+    
+    mutating func shiftGear(newGear: Int) -> String{
+        let numGears = 5
+        if (newGear > 5 || newGear < 1 ){
+            return "What have you done to your car?!"
+        }
+        self.currentGear = newGear
+        return "Zoom zoom at gear \(newGear)"
+    }
+    
+}
+
+var myCar = Car(numSeats: 2, currentGear: 2)
+print(myCar.currentGear)
+print(myCar.shiftGear(newGear: 4))
 
