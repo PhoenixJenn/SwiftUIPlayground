@@ -204,6 +204,56 @@ var day2 = Weekday.monday
 day = .tuesday
 day = .friday
 
+/*:
+ ## TUPLES
+ ---------------------------------
+ */
+// let's review Tuples
+var product = ("MacBook", 1099.99)
+
+// access tuple elements
+print("Name:", product.0)
+print("Price:", product.1)
+// modify second value
+product.1 = 1299.99
+
+print("\nTuple After Modification: ")
+
+// access tuple elements
+print("Name:", product.0)
+print("Price:", product.1)
+
+var company = (product: "Programiz App", version: 2.1)
+// access tuple element using name
+print("Product:", company.product)
+print("Version:", company.version)
+
+// Nested Tuples
+
+var alphabets = ("A", "B", "C", ("a", "b", "c"))
+
+// access first element
+print(alphabets.0)   // prints "A"
+
+// access the third element
+print(alphabets.3)
+
+// access nested tuple
+print(alphabets.3.0)  // prints "a"
+
+// CANNOT add and remove elements from a Tuple
+
+// In Swift, we can use a dictionary to add an element to a tuple.
+// the third element of the tuple is a dictionary
+// (String, String, Dictionary)
+var laptopLaunch = ("MacBook", 1299, ["Nepal": "10 PM", "England": "10 AM"])
+print(laptopLaunch.2)
+
+// since there is a dictionary, we can add items
+laptopLaunch.2["USA"] = "11 AM"
+print(laptopLaunch.2)
+
+// ------------------------
 
 // Annotations
 // type inference: Swift infers that surname is a string

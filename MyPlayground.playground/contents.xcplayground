@@ -4,5 +4,13 @@
         <page name='Introduction'/>
         <page name='Variables and Data Structures'/>
         <page name='Control Loops etc'/>
+        <page name='Functions Params and Return Vals'/>
+        <page name='ErrorHandling'/>
+        <page name='Closures and Functions in Functions'/>
+        <page name='Challenges'/>
+        <page name='Structs'/>
+        <page name='Arrays All Day'/>
+        <page name='Strings'/>
+        <page name='Dictionaries'/>
     </pages>
 </playground>
