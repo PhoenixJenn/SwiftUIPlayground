@@ -12,5 +12,6 @@
         <page name='Arrays All Day'/>
         <page name='Strings'/>
         <page name='Dictionaries'/>
+        <page name='Classes'/>
     </pages>
 </playground>
