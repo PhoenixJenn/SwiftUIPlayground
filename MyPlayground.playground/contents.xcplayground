@@ -10,9 +10,6 @@
         <page name='Challenges'/>
         <page name='Protocols and Extensions'/>
         <page name='Structs'/>
-        <page name='Arrays All Day'/>
-        <page name='Strings'/>
-        <page name='Dictionaries'/>
         <page name='Classes'/>
     </pages>
 </playground>
