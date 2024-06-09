@@ -1,16 +1,20 @@
 /*:  [Previous](@previous)    [HOME](Introduction)          [Next](@next)
  
- # Closures and Sending Functions into Functions
+ (1) Closures \
+ (2) Classes/Structs
  
- func generateNumber() -> Int {
-     Int.random(in: 1...20)
- }
  
 */
 
 import Foundation
 
 /*:
+ 
+ # Closures and Sending Functions into Functions
+ 
+ func generateNumber() -> Int {
+     Int.random(in: 1...20)
+ }
  
  use sorted(), filter(), map()
  
@@ -113,3 +117,78 @@ doImportantWorkChain(inputNumArray:luckyNumbers) { number in
 //    type()
 //}
 //deliverTalk(name: "My Awesome Talk", type: awesomeTalk)
+
+
+
+/*:
+ Your challenge is this: 
+ make a class hierarchy for animals, starting with Animal at the top, then Dog and Cat as subclasses,
+ then Corgi and Poodle as subclasses of Dog, and Persian and Lion as subclasses of Cat.
+
+ But there’s more:
+
+ [x]The Animal class should have a legs integer property that tracks how many legs the animal has.\
+ The Dog class should have a speak() method that prints a generic dog barking string, but each of the subclasses should print something slightly different.
+ The Cat class should have a matching speak() method, again with each subclass printing something different.
+ The Cat class should have an isTame Boolean property, provided using an initializer.
+ */
+
+class Animal {
+    var legs = 4
+    func speak() {
+        
+    }
+    init(legs: Int = 4) {
+        self.legs = legs
+    }
+}
+
+
+class Cat : Animal {
+    var isTame: Bool = false {
+        didSet {
+            if (isTame == true){
+                print("phew, this Cat is tame:\(isTame)")
+            } else {
+                print("YIKES, this Cat is tame:\(isTame)")
+            }
+        }
+    }
+     init(isTame: Bool, legs: Int) {
+        self.isTame = isTame
+        super.init(legs:legs)
+    }
+    override func speak(){
+        print("meow")
+    }
+}
+
+class Dog : Animal {
+    var color : String
+    
+    init(legs: Int, color: String) {
+        self.color = color
+        super.init(legs:legs)
+    }
+    override func speak(){
+        print("woof")
+    }
+}
+
+class Poodle : Dog {
+    override func speak(){
+        print("whine, give me a cookie")
+    }
+}
+var monster = Animal( legs:8)
+var lucy = Dog(legs:4, color: "white")
+lucy.speak()
+
+var azriel = Cat(isTame: true,legs:4)
+azriel.speak()
+azriel.isTame = false
+
+var marajade = Poodle(legs:4, color: "orange")
+marajade.speak()
+
+

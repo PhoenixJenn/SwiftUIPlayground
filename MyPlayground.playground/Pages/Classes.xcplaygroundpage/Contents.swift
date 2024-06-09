@@ -7,6 +7,7 @@
  * using final (do not subclass)
  
  Properties of Classes that differentiate from structs:
+ * structs require mutating to change variables, classes do not
  
 (1)  You can make one class build upon functionality in another class, gaining all its properties and methods as a starting point. If you want to selectively override some methods, you can do that too.\
  (2) Because of that first point, Swift won’t automatically generate a memberwise initializer for classes. This means you either need to write your own initializer, or assign default values to all your properties.\
@@ -171,3 +172,15 @@ print("---------")
 print("Loop is finished!")
 users.removeAll()
 print("Array is clear!")
+
+
+// ---------Pizza Class----------
+
+class Pizza {
+    private var toppings = [String]()
+    func add(topping: String) {
+        toppings.append(topping)
+    }
+}
+var pizza = Pizza()
+pizza.add(topping: "Mushrooms")
