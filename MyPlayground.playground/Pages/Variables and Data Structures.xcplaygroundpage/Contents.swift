@@ -1,4 +1,11 @@
 /*:  [Previous](@previous)    [HOME](Introduction)          [Next](@next)
+ 
+ 
+ * Strings  https://developer.apple.com/documentation/swift/string
+ * Dictionaries  https://developer.apple.com/documentation/swift/dictionary
+ * Arrays   https://developer.apple.com/documentation/swift/array
+ 
+ 
 */
 
 import Cocoa

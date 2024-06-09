@@ -329,6 +329,45 @@ extension Anime {
     }
 }
 
+print("------extension of Numeric type --------------")
+extension Numeric {
+    func squared() -> Self {
+        self * self
+    }
+}
+
+var sqrd : Int = 7
+print(sqrd.squared())
+
+
+print("-------Equatable is a built-in protocol ... Comparable is also a built-in protocol -------------")
+struct User: Equatable, Comparable {
+    let name: String
+}
+/*:
+ We actually don't need Equatable to make it work.
+ 
+ struct User: Comparable {
+     let name: String
+ }
+ */
+let user1 = User(name: "Link")
+let user2 = User(name: "Zelda")
+print(user1 == user2)
+print(user1 != user2)
+
 print("--------------------")
+func <(lhs: User, rhs: User) -> Bool {
+    lhs.name < rhs.name
+}
+
+let user3 = User(name: "Taylor")
+let user4 = User(name: "Adele")
+print(user3 < user4)
+print("--------------------")
+
+
+
+
 print("This is the end")
 
