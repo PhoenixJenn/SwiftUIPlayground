@@ -3,6 +3,7 @@
  (1) Closures \
  (2) Classes/Structs
  (3) Protocols and Extensions
+ (4) Optionals
  
  
 */
@@ -240,3 +241,35 @@ struct House : Building {
 let myHouse = House(doors: 3, floors: 3, rooms: 13, cost: 1_025_000, agent: "Ken")
 myHouse.printSalesSummary()
 
+/*:
+ # Optionals
+ 
+ write a function that accepts an optional array of integers, and returns one randomly. 
+ If the array is missing or empty, return a random number in the range 1 through 100.
+
+ 
+ var bookx: BookLib? = nil
+ let authorx = bookx?.author?.first?.uppercased() ?? "A"
+ print(authorx)
+ let artistNames = ["Vincent": "van Gogh", "Pablo": "Picasso", "Claude": "Monet"]
+ // let surnameLetter = artistNames["Vincent"]?.first?.uppercased()
+ let surnameLetter = artistNames["Vincent"]?.first?.uppercased() ?? "?"
+ Int.random(in: 1...20)
+ let tvShows = ["Archer", "Babylon 5", "Ted Lasso"]
+ let favorite = tvShows.randomElement() ?? "None"
+
+
+ */
+
+print("-------- optionals using a function single line -------- ")
+func intArray(myInt: [Int]?) -> Int { myInt?.randomElement() ?? Int.random(in: 1...20) }
+
+let myreturn = intArray(myInt: nil)
+print(myreturn)
+
+print("-------- using a closure single line-------- ")
+let sayHello3 = { (myInt: [Int]?) -> Int in myInt?.randomElement() ?? Int.random(in: 1...20)}
+print(sayHello3(nil))
+
+
+print("-------- end of file -------- ")
