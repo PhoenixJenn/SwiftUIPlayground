@@ -5,7 +5,29 @@
  * Throwing Functions
  * Optionals
  * Unwrapping optionals https://www.hackingwithswift.com/quick-start/understanding-swift/why-does-swift-make-us-unwrap-optionals
- * guard let https://www.hackingwithswift.com/quick-start/beginners/how-to-unwrap-optionals-with-guard
+ ### if let
+ * if let number = number { doSomething() }
+ 
+### guard let
+ * **guard let** number = number else { return }  https://www.hackingwithswift.com/quick-start/beginners/how-to-unwrap-optionals-with-guard
+ * Use guard let to return from a function if empty val; return is mandatory
+
+ ### nil coalescing
+ * Nil coalescing lets us attempt to unwrap an optional, but provide a default value if the optional contains nil.
+ -- book.author ?? "Anonymous"      \
+ -- Int(input) ?? 0        \
+ 
+ * You can chain nil coalescing, which runs sequentially. That will attempt to run first(), and if that returns nil attempt to run second(), and if that returns nil then it will use an empty string. \
+ -- let savedData = first() ?? second() ?? ""
+ 
+### Optional chaining
+ 
+ * ex: let surnameLetter = artistNames["Vincent"]?.first?.uppercased() ?? "?"
+ 
+ # try?
+ * wont' give you the actual error
+ * When we call a function that might throw errors, we either call it using try and handle errors
+ 
 */
 
 import Foundation
@@ -267,3 +289,153 @@ printSquare2(of: 51)
  Tip: You can use guard with any condition, including ones that don’t unwrap optionals. For example, you might use guard someArray.isEmpty else { return }.
  
  */
+
+print("------Example ---------")
+func double(number: Int?) -> Int? {
+    guard let number = number else {
+        return nil
+    }
+    return number * 2
+}
+let input = 5
+if let doubled = double(number: input) {
+    print("\(input) doubled is \(doubled).")
+}
+
+print("------Example ---------")
+func isLongEnough(_ string: String?) -> Bool {
+    guard let string = string else { return false }
+    if string.count >= 8 {
+        return true
+    } else {
+        return false
+    }
+}
+if isLongEnough("Mario Odyssey") {
+    print("Let's play that!")
+}
+
+print("------Nil Coalesce ---------")
+
+// there is no captain of Serenity
+let captains = [
+    "Enterprise": "Picard",
+    "Voyager": "Janeway",
+    "Defiant": "Sisko"
+]
+// That will read the value from the captains dictionary and attempt to unwrap it. (commented out due to error)
+if let new = captains["Serenity"] {
+    print(new)
+}
+
+let new2 = captains["Serenity"] ?? "N/A"
+print(new2)
+
+let new3 = captains["Serenity", default: "N/A"]
+print(new3)
+
+
+
+let tvShows = ["Archer", "Babylon 5", "Ted Lasso"]
+let favorite = tvShows.randomElement() ?? "None"
+// the randomElement() method on arrays returns one random item from the array, but it returns an optional because you might be calling it on an empty array
+
+print(favorite)
+
+// you can provide an optional if missing
+struct Book {
+    let title: String
+    let author: String?
+}
+
+let book = Book(title: "Beowulf", author: nil)
+let author = book.author ?? "Anonymous"
+print(author)
+
+
+let inputx = ""
+let numberx = Int(inputx) ?? 0
+print(numberx)
+
+
+
+let scores = ["Picard": 800, "Data": 7000, "Troi": 900]
+let crusherScore = scores["Crusher"] ?? 0
+
+
+let crusherScore2 = scores["Crusher", default: 0]
+
+
+let names = ["Arya", "Bran", "Robb", "Sansa"]
+
+let chosen = names.randomElement()?.uppercased() ?? "No one"
+print("Next in line: \(chosen)")
+
+
+/*:
+ 
+ Optional chaining allows us to say “if the optional has a value inside, unwrap it then…” and we can add more code. In our case we’re saying “if we managed to get a random element from the array, then uppercase it.” Remember, randomElement() returns an optional because the array might be empty.
+ */
+
+
+
+/*:
+ ### EXAMPLE
+ 
+ we want to place books in alphabetical order based on their author names. If we break this right down, then:
+
+ * We have an optional instance of a Book struct – we might have a book to sort, or we might not.
+*  The book might have an author, or might be anonymous.
+ * If it does have an author string present, it might be an empty string or have text, so we can’t always rely on the first letter being there.
+ * If the first letter is there, make sure it’s uppercase so that authors with lowercase names such as bell hooks are sorted correctly.
+
+ */
+
+struct BookLib {
+    let title: String
+    let author: String?
+}
+
+var bookx: BookLib? = nil
+let authorx = bookx?.author?.first?.uppercased() ?? "A"
+print(authorx)
+
+
+
+let artistNames = ["Vincent": "van Gogh", "Pablo": "Picasso", "Claude": "Monet"]
+// let surnameLetter = artistNames["Vincent"]?.first?.uppercased()
+let surnameLetter = artistNames["Vincent"]?.first?.uppercased() ?? "?"
+
+print(surnameLetter)
+
+// what is (for xxx)
+func loadForecast(for dayNumber: Int) -> String? {
+    print("Forecast unavailable.")
+    return nil
+}
+let forecast = loadForecast(for: 3)?.uppercased()
+
+let racers = ["Hamilton", "Verstappen", "Vettel"]
+let winnerWasVE = racers.first?.hasPrefix("Ve")
+
+
+
+enum UserError: Error {
+    case badID, networkFailed
+}
+
+// this always throws an error
+func getUser(id: Int) throws -> String {
+    throw UserError.networkFailed
+}
+
+if let user = try? getUser(id: 23) {
+    print("User: \(user)")
+}
+
+// notice the extra parenthesis 
+let user33 = (try? getUser(id: 23)) ?? "Anonymous"
+print(user33)
+
+
+print("------End of file ---------")

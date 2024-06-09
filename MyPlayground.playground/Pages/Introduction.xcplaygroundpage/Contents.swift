@@ -9,6 +9,24 @@
  
   * [Website: 100 Days of SwiftUI](https://www.hackingwithswift.com/100/swiftui)
  
+ Days 1-14: Introduction to Swift  COMPLETED : June 5 - June 9 2024 \
+ Day 15: Consolidation I \
+ Days 16-24: Starting SwiftUI - Swift review \
+ Days 16-24: Starting SwiftUI \
+ Day 25: Consolidation II \
+ Days 26-34: Expanding your skills \
+ Day 35: Consolidation III \
+ Days 36-46: Scaling up to bigger apps \
+ Days 47-48: Consolidation IV \
+ Days 49-59: Focus on data \
+ Days 60-61: Consolidation V \
+ Days 62-76: Filters, maps, and more \
+ 
+ Days 77-78: Consolidation VI \
+ Days 79-94: Controlling UI flow \
+ Days 95: Consolidation VII \
+ Days 96-99: One last project \
+ Wrap up \
  
  * [Playground: Variables and Data Structures](Variables%20and%20Data%20Structures)
  * [Playground: Control Loops etc](Control%20Loops%20etc)
