@@ -8,6 +8,7 @@
         <page name='ErrorHandling'/>
         <page name='Closures and Functions in Functions'/>
         <page name='Challenges'/>
+        <page name='Protocols and Extensions'/>
         <page name='Structs'/>
         <page name='Arrays All Day'/>
         <page name='Strings'/>
