@@ -1,8 +1,9 @@
 /*:  [Previous](@previous)    [HOME](Introduction)          [Next](@next)
  
  # Error Handling 101
- 
  * Throwing Functions
+ * do...try... catch
+
  * Optionals
  * Unwrapping optionals https://www.hackingwithswift.com/quick-start/understanding-swift/why-does-swift-make-us-unwrap-optionals
  ### if let
@@ -49,7 +50,10 @@ enum PasswordError: Error {
 
 /*:
  
- That says there are two possible errors with password: short and obvious. It doesn’t define what those mean, only that they exist.
+ That says there are two possible errors with password:
+ too short and too obvious.
+ 
+ It doesn’t define what those mean, only that they exist.
 
  Step two is to write a function that will trigger one of those errors. When an error is triggered – or thrown in Swift – we’re saying something fatal went wrong with the function, and instead of continuing as normal it immediately terminates without sending back any value.
 
@@ -90,14 +94,11 @@ func checkPassword(_ password: String) throws -> String {
 
 // REAL Error Handling!
 
-
 //do {
 //    try someRiskyWork()
 //} catch {
 //    print("Handle errors here")
 //}
-
-
 
 let string = "12345"
 
@@ -375,7 +376,6 @@ let crusherScore2 = scores["Crusher", default: 0]
 
 
 let names = ["Arya", "Bran", "Robb", "Sansa"]
-
 let chosen = names.randomElement()?.uppercased() ?? "No one"
 print("Next in line: \(chosen)")
 

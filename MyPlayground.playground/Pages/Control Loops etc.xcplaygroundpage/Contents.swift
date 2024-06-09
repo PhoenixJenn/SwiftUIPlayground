@@ -1,6 +1,14 @@
 /*:  [Previous](@previous)    [HOME](Introduction)          [Next](@next)
  
- This section includes If..Else, For, While, Switch..Case, Continue/Break
+ This section includes 
+ * If..Else; If x && y; If x || y; if...(continue)...(break)
+ * Ternary: let canVote = age >= 18 ? "yes" : "no"
+ * For: for _ in 1..<12 { print(_)}
+ * While
+ * Switch ..Case (enums)
+ * Continue/Break
+ 
+ 
 */
 
 import Foundation
@@ -40,9 +48,8 @@ if numbers.count > 3 {
 print(numbers)
 
 
-
+print("------------------------")
 let country = "Canada"
-
 if country == "Australia" {
     print("G'day!")
 }
@@ -66,6 +73,8 @@ if username == "" {
 // Now print a welcome message
 print("Welcome, \(username)!")
 
+
+
 // --- how many letters; counting in Swift is expensive because it doesn't store the length
 
 if username.count == 0 {
@@ -81,7 +90,7 @@ if username.isEmpty {
 }
 
 
-
+print("------------------------")
 // --- adding else
 
 let age = 16

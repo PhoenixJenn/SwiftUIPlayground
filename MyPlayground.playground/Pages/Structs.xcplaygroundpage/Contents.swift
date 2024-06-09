@@ -2,6 +2,7 @@
  
  # Structs
  * Member Constants/Variables
+ * memberwise initializer
  * Mutating Methods
  * Setters and Getters
  * didSet, willSet

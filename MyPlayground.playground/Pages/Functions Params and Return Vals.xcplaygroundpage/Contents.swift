@@ -6,6 +6,25 @@
 */
 
 import Foundation
+//  ----  Tricks  --------
+// to ignore passing in a variable name
+print("---- to avoid having to pass in variable name ----")
+func isUpperCase(_ string: String) -> Bool {
+    string == string.uppercased()
+}
+let mystring = "Hello World"
+let myresult = isUpperCase(mystring)
+
+print("---- to have flexible input variable names, use for ----")
+
+func printTymesTable(for number:Int){
+    for i in 1...12 {
+        print "do some math"
+    }
+}
+
+print(printTymesTable(for:5))
+
 
 
 func showWelcome() {
@@ -59,8 +78,6 @@ func rollDice() -> Int {
 
 let result = rollDice()
 print(result)
-
-
 
 
 func areLettersIdentical(string1: String, string2: String) -> Bool {
@@ -120,9 +137,7 @@ print("Name: \(user[0]) \(user[1])")
 
 
 // We could use a dictionary instead, but that has its own problems:
-
-
-
+print("----- return a tuple ----")
 // Here’s how our function looks when it returns a tuple:
 
 func getMyUser() -> (firstName: String, lastName: String) {
@@ -131,6 +146,10 @@ func getMyUser() -> (firstName: String, lastName: String) {
 
 let user1 = getMyUser()
 print("Name: \(user1.firstName) \(user1.lastName)")
+
+// to ignore part of the tuple, use underscore
+let (firstname, _)  = getMyUser()
+print("Name:\(firstname)")
 
 /*:
  or:

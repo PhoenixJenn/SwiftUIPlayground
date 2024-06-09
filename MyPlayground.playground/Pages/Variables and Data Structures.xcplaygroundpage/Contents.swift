@@ -4,40 +4,71 @@
  * Strings  https://developer.apple.com/documentation/swift/string
  * Dictionaries  https://developer.apple.com/documentation/swift/dictionary
  * Arrays   https://developer.apple.com/documentation/swift/array
+ * Sets (can't have duplicates, will dedupe for you. Stores in random order, instant retrieval)
+ * Tuples
+ * Enums
  
  
 */
 
 import Cocoa
 
-let NPC = "Shawn"
-var greeting = "Hello, playground"
+// TLDR; Examples
+var gamescore: Double = 0
+let playername: String = "Jenn"
+let pi: Double = 3.1412
+var isEnabled: Bool = true
+var vhAlbums: Array<String> = ["1984","OU812"]
+var vhAlbums2: [String] = ["1984","OU812"]
+var users: Dictionary<String,String> = ["@username": "@name"]
+var usersDictionary2: [String:String] = ["@username": "@name"]
+var audiobooks: Set<String> = Set(["Sandman", "Think Like a Rocket Scientist"])
+var teams2: [String] = [String]()
+var clues =  [String]()
+// let is a constant, var is a variable
 
-var player = "Royal"
-print(player)
+// #  -- STRINGS --
+// string manipulation
 
-player = "Azrael"
-print(greeting)
-print(player)
-
+print ("--------STRINGS------------")
+let NPC = "Shawn" // constant
 let quote = "So you \"think\" you can dance?"
-
 let tvshow = """
 The
 Marvelous
 Mrs
 Maisel
 """
+
+var greeting = "Hello, playground" //variable
+print(greeting)
 print(greeting.count)
 print(greeting.uppercased())
 
+print ("--------------------")
+var player = "Royal"
+print(player)
+// reassign variable
+player = "Azrael"
+print(player)
 print(player.hasPrefix("Az")) // if player starts with az
 print(player.hasSuffix("le"))
 
-var score = 10
+print ("--------------------")
+let name = "Taylor"
+let age = 26
+let message = "Hello, my name is \(name) and I'm \(age) years old."
+print(message)
 
+
+// # -- NUMBERS --
+//  can't assign an integer into a string ie., player = 50
+print ("---------NUMBERS-----------")
+// Numbers
 let reallyBig = 1_000_000_000  // swift ignores the underscores
 print(reallyBig)
+
+var score = 10
 let lowerScore = score-2
 score += 10
 print(score)
@@ -62,19 +93,17 @@ let double2 = 3131.3131
 let double3 = 3.0
 let int1 = 3
 
-// can't assign an integer into a string ie., player = 50
-
-// string manipulation
-
-let name = "Taylor"
-let age = 26
-let message = "Hello, my name is \(name) and I'm \(age) years old."
-print(message)
 
 let num = 11
+// this would error. Can't combine num and string
 // let missionMessage = "Apollo " + num + " landed on the moon."
+// can pass as input
 print("5 x 5 is \(5 * 5)")
 
+
+
+// # -- ARRAYS --
+print ("---------ARRAYS-----------")
 var beatles = ["John", "Paul", "George", "Ringo"]
 let numbers = [4, 8, 15, 16, 23, 42]
 var temperatures = [25.3, 28.2, 26.4]
@@ -139,7 +168,8 @@ let presidents = ["Bush", "Obama", "Nobody", "Biden"]
 let reversedPresidents = presidents.reversed()
 print(reversedPresidents)
 
-
+print ("---------DICTIONARIES-----------")
+// # -- DICTIONARIES --
 // data dictionaries
 let employee3 = ["name": "Taylor Swift", "job": "Singer", "location": "Nashville"]
 //print(employee3["name"])
@@ -179,6 +209,8 @@ archEnemies["Batman"] = "Penguin"
 // SETs store information that is optimized for retrieval
 // setname.contains("name") is FAST, unlike arrays
 
+print ("---------SETS-----------")
+// # -- SETS --
 let peopleset = Set(["Denzel Washington", "Tom Cruise", "Nicolas Cage", "Samuel L Jackson"])
 
 // SETs use insert whereas arrays use append
@@ -191,6 +223,8 @@ peoples.count
 print(peoples.sorted())
 
 
+print ("---------ENUMS-----------")
+// # -- ENUMS --
 //enum Weekday {
 //    case monday
 //    case tuesday
@@ -211,10 +245,12 @@ var day2 = Weekday.monday
 day = .tuesday
 day = .friday
 
+print ("---------TUPLES-----------")
 /*:
- ## TUPLES
+ # TUPLES
  ---------------------------------
  */
+
 // let's review Tuples
 var product = ("MacBook", 1099.99)
 
@@ -235,6 +271,7 @@ var company = (product: "Programiz App", version: 2.1)
 print("Product:", company.product)
 print("Version:", company.version)
 
+print ("---------NESTED TUPLES-----------")
 // Nested Tuples
 
 var alphabets = ("A", "B", "C", ("a", "b", "c"))
@@ -250,6 +287,7 @@ print(alphabets.3.0)  // prints "a"
 
 // CANNOT add and remove elements from a Tuple
 
+print ("---------TUPLES + DICTIONARIES-----------")
 // In Swift, we can use a dictionary to add an element to a tuple.
 // the third element of the tuple is a dictionary
 // (String, String, Dictionary)
@@ -262,7 +300,8 @@ print(laptopLaunch.2)
 
 // ------------------------
 
-// Annotations
+print ("---------TYPE ANNOTATIONS-----------")
+// # -- TYPE ANNOTATIONS --
 // type inference: Swift infers that surname is a string
 // let surname = "Lasso"
 // var score = 0
@@ -273,6 +312,9 @@ var score2: Int = 0
 var score3: Double = 0
 let pi: Double = 3.141
 var isAuthenticated: Bool = true
+isAuthenticated.toggle() // toggles it to false
+
+var myMessage = "I\'m \(surname) and my score is \(score2)"
 var myAlbums: [String] = ["Red", "Fearless"]
 
 var user: [String: String] = ["id": "@twostraws"]
