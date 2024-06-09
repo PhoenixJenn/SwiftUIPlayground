@@ -1,6 +1,8 @@
 /*:  [Previous](@previous)    [HOME](Introduction)          [Next](@next)
  
  This section includes Functions Params and Return Vals
+ 
+ * throwing functions (see Error Handling)
 */
 
 import Foundation

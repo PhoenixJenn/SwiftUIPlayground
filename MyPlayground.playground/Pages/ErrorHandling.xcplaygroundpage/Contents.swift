@@ -1,6 +1,11 @@
 /*:  [Previous](@previous)    [HOME](Introduction)          [Next](@next)
  
  # Error Handling 101
+ 
+ * Throwing Functions
+ * Optionals
+ * Unwrapping optionals https://www.hackingwithswift.com/quick-start/understanding-swift/why-does-swift-make-us-unwrap-optionals
+ * guard let https://www.hackingwithswift.com/quick-start/beginners/how-to-unwrap-optionals-with-guard
 */
 
 import Foundation
@@ -141,4 +146,124 @@ func constructBuilding(floors: Int) throws {
     print("Perfect - let's get building!")
 }
 
-constructBuilding(floors: 13)
+// constructBuilding(floors: 13)
+
+
+/*:
+ -----Optionals
+ */
+
+let opposites = [
+    "Mario": "Wario",
+    "Luigi": "Waluigi"
+]
+
+let peachOpposite = opposites["Peach"]
+
+// String? means there might be a string waiting inside for us, or there might be nothing at all – a special value called nil, that means “no value”
+
+if let marioOpposite = opposites["Mario"] {
+    print("Mario's opposite is \(marioOpposite)")
+}
+
+var username: String? = nil
+
+if let unwrappedName = username {
+    print("We got a user: \(unwrappedName)")
+} else {
+    print("The optional was empty.")
+}
+
+/*:
+ an array of integers might contain one or more numbers, or perhaps no numbers at all, but both of those are different from optional arrays set to nil.
+ */
+
+
+func square(number: Int) -> Int {
+    number * number
+}
+
+var number: Int? = nil
+
+// use "if let " when assigning to unwrap the optional
+if let unwrappedNumber = number {
+    print(square(number: unwrappedNumber))
+}
+
+/*:
+ 
+ > Note: You can also do this, VERY COMMON in Swift
+ temporarily creating a second constant called number. The new temp constant only works in the braces.
+ Called shadowing
+ 
+ if let number = number {
+    // valid to use new 'number' variable
+     print(square(number: unwrappedNumber))
+    // valid to use new 'number' variable
+ }
+ // no longer valid to use new 'number'
+ 
+ */
+var num1 = 1_000_000
+var num2 = 0
+var num3: Int? = nil
+
+var str1 = "Hello"
+var str2 = ""
+var str3 : String? = nil
+
+var arr1 = [0]
+var arr2 = [Int]()
+var arr3 : [Int]? =  nil
+
+
+
+func getUsername() -> String? {
+    "Taylor"
+}
+
+if let username = getUsername() {
+    print("Username is \(username)")
+} else {
+    print("No username")
+}
+
+
+
+// -------- using guard let
+
+// if let only runs code if there is a value inside optional
+// guard let only runs code if there is NOT a value isnide
+
+
+func printSquare(of number: Int?) {
+    guard let number = number else {
+        print("Missing input")
+        return
+    }
+
+    print("\(number) x \(number) is \(number * number)")
+}
+
+
+var myVar: Int? = 3
+
+func printSquare2(of number: Int?) {
+    guard let number = number else {
+        print("Missing input")
+
+        // 1: We *must* exit the function here
+        return
+    }
+
+    // 2: `number` is still available outside of `guard`
+    print("\(number) x \(number) is \(number * number)")
+}
+
+printSquare2(of: nil)
+printSquare2(of: 51)
+
+/*:
+ Tip: You can use guard with any condition, including ones that don’t unwrap optionals. For example, you might use guard someArray.isEmpty else { return }.
+ 
+ */
