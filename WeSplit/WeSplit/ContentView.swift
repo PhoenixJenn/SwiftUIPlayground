@@ -4,6 +4,8 @@
 //
 //  Created by Jennifer Lee on 6/10/24.
 // Command + R   will run the simulator
+// Day 16 https://www.hackingwithswift.com/100/swiftui/16
+// "views are a function of their state"
 
 import SwiftUI
 
@@ -12,13 +14,45 @@ import SwiftUI
 // use a property wrapper: @State
 
 struct ContentView: View {
-    @State private var tapCount = 0
+    var body: some View {
+        Text("Hello World!")
+    }
+}
+//    let students = ["Harry", "Hermione", "Ron"]
+//    @State private var selectedStudent = "Harry"
+//    
+//    @State private var tapCount = 0
+//    // two way binding
+//    @State private var name = ""
+    
 
-        var body: some View {
-            Button("Tap Count: \(tapCount)") {
-                self.tapCount += 1
-            }
-        
+//        var body: some View {
+           
+//            Form{
+//                Button("Tap Count: \(tapCount)") {
+//                    self.tapCount += 1
+//                }
+//                
+//                Text("Hello, \(name)!")
+//                // use dollar sign $ = two-way binding; read and write value
+//                TextField("Enter your name..",text: $name)
+//                
+//                Picker("Select your student", selection: $selectedStudent) {
+//                    ForEach(students, id: \.self) {
+//                        Text($0)
+//                    }
+//                }
+//                
+////                ForEach(0..<10) { number in
+////                        Text("Row \(number)")
+////                }
+//                // can use shorter statement
+//                ForEach(0 ..< 100) {
+//                        Text("Row \($0)")
+//                }
+//                
+//                
+//            }
 //        NavigationStack{
 //            Form {
 //                Text("Hello, Cali!")
@@ -48,8 +82,8 @@ struct ContentView: View {
 //        }
         
         
-    }
-}
+//    }
+//}
 
 #Preview {
     ContentView()
