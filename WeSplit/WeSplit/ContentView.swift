@@ -45,6 +45,7 @@ struct ContentView: View {
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
                     
+                    // this uses a closure; $0 is a closure param
                     Picker("Number of people", selection: $numberOfPeople) {
                             ForEach(2..<20) {
                                 Text("\($0) people")
