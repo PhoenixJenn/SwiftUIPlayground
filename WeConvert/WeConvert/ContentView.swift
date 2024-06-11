@@ -94,6 +94,10 @@ struct ContentView: View {
                     newAmount = convertDistance()
                 case "time":
                     newAmount = convertTime()
+                case "temp" :
+                    newAmount = convertTemp()
+                case "volume" :
+                    newAmount = convertVolume()
                 default:
                     newAmount = 0.0
             }
@@ -104,13 +108,46 @@ struct ContentView: View {
         return amount
     }
   
+    func convertVolume() -> Double {
+        
+        return 0.0
+    }
+    
+    func convertTemp() -> Double {
+        
+        return 0.0
+    }
     
     func convertTime () -> Double {
         var convertedTime = 0.0
-        // convert to smallet denominator, then multiple
+        
+        let secondsInMinute : Double = 60
+        let minutesInHour : Double = 60
+        let hoursInDay : Double = 24
+        
+        // convert to seconds
         switch convertFrom {
             case "days":
-                convertedTime = amount
+                    convertedTime = amount * hoursInDay * minutesInHour * secondsInMinute
+            case "hours" :
+                    convertedTime = amount * minutesInHour * secondsInMinute
+            case "minutes" :
+                    convertedTime = amount * secondsInMinute
+            case "seconds" :
+                    convertedTime = amount
+            default:
+                    return amount
+        }
+        
+        switch convertTo {
+            case "days" :
+                    convertedTime = convertedTime/secondsInMinute/minutesInHour/hoursInDay
+            case "hours" :
+                    convertedTime *= secondsInMinute * minutesInHour
+            case "minutes" :
+                    convertedTime *= secondsInMinute
+            case "seconds" :
+                    convertedTime *= 1
             default:
                 return amount
         }
