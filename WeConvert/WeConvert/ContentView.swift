@@ -66,9 +66,10 @@ struct ContentView: View {
         
         // TODO: make sure you test for valid input
         //guard let inputValue = Double(inputValue) else { return "Invalid Input" }
-    
+
        // need to make sure there is a number in here...
-        
+        // inputValue?
+        // if let inputValue = inputValue {
         if !inputValue.isNaN && inputValue > 0 {
             // convert
             switch selectedConversionType {

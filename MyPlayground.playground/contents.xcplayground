@@ -12,5 +12,6 @@
         <page name='Structs'/>
         <page name='Classes'/>
         <page name='SwiftUI Examples'/>
+        <page name='scratch'/>
     </pages>
 </playground>
