@@ -3,45 +3,17 @@
 //  WeConvert
 //
 //  Created by Jennifer Lee on 6/10/24.
-//
+// https://www.hackingwithswift.com/100/swiftui/19
 
 /*:
- build an app that handles unit conversions: users will select an input unit and an output unit, then enter a value, and see the output of the conversion.
-
- Which units you choose are down to you, but you could choose one of these:
-Choose Conversion Type:
-
-conversionType: [Temp][Length][Time][Volume]
-
- --- for consistency, start with largest -> smallest
+OPEN QUESTIONS:
+ How to print to console or show the value in variables for debug?
  
- Temp: Celsius, Fahrenheit
-
+ TODO: Finish temp and volume converters
+ TODO: Validate input for amount. Should I use guard let?
+ TODO: return string instead of double for Converted Value; someDouble.formatted()
+ TODO: How do i set the value of convertFrom/convertTo when the arrays are set?
  
- Parsecs: Miles
- 1pc = 19173501441011 mi
- 1pc = 30856800000000 km
- 
- Kilometers = Parsecs * 30856800000000
- Miles = Parsecs * 19173501441011
- 
- 
- 
-Time: seconds, minutes, hours, days
-LiquidVolume: milliliters, liters <--> cups, pints, or gallons.
- 
- 
- US gal lqd =L * 0.26417
- 
-  the easiest way to store your conversion units is to have a simple string array, which you can loop over using something like ForEach(units, id: \.self).
- 
- If you were going for length conversion you might have:
-- A segmented control for meters, kilometers, feet, yard, or miles, for the input unit.
- - A second segmented control for meters, kilometers, feet, yard, or miles, for the output unit.
- - A text field where users enter a number.
- - A text view showing the result of the conversion.
- 
- So, if you chose meters for source unit and feet for output unit, then entered 10, you’d see 32.81 as the output.
  
  Advanced Picker project
  https://smehta.medium.com/ios-swift-creating-a-dynamic-picker-view-843b3290e7f0
@@ -50,71 +22,92 @@ LiquidVolume: milliliters, liters <--> cups, pints, or gallons.
 import SwiftUI
 
 struct ContentView: View {
-    @State private var conversionType = "distance"
+    @State private var selectedConversionType = "distance" // can use 0 here for index
     @State private var convertFrom = ""  // dynamic assignment of starting units
     @State private var convertTo = "" // dynamic assignment of ending units
-    @State private var amount : Double = 0.0
-   // @State private var myMessage : String = ""
+    @State private var inputValue : Double = 0.0
+    @State private var baselineAmount : Double = 0.0
    
    
     let conversionTypes = ["distance", "time", "temp", "volume"]
-    let distance : [String]  = ["","miles","yards","feet","inches","kilometers","meters","centimeters","millimeters"]
+    let distance : [String]  = ["miles","yards","feet","inches","kilometers","meters","centimeters","millimeters"]
     let time = ["days","hours","minutes","seconds"]
-    let temp = ["Fahrenheit","Celsius"]
-    let volume = ["gallons","pints","cups","liters","milliliters"]
-    
-    
-    
+    let temp = ["Celsius", "Fahrenheit", "Kelvin"]
+    let volume = ["gallons", "quarts", "pints","cups", "liters", "milliliters"]
     
     // runs when selects a conversion from segemented top
-    var typeArray: [String] {
-        var selectedArray : [String] = [""]
-        switch conversionType {
+    var selectedUnits: [String] {
+    
+        switch selectedConversionType {
             case "distance":
-                selectedArray = distance
+                return distance
             case "time":
-                selectedArray = time
+                return time
             case "temp":
-                selectedArray = temp
+                return temp
             case "volume":
-                selectedArray = volume
+                return volume
             default:
-                selectedArray = distance
+                return distance
         }
-       return selectedArray
+
     }
     
-    // runs when amount changes
-    var convertedAmount : Double {
+    // runs when inputValue changes
+    // what if we return a string?
+    //    var convertedValue: String {
+    //        guard let value = Double(inputValue) else { return "Invalid Input" }
+    //        return String(format: "%.2f", convert(value: value, from: selectedFromUnit, to: selectedToUnit, type: selectedConversionType))
+    //    }
+    
+    
+    var convertedValue : Double {
         var newAmount : Double = 0.0
-        if amount > 0 {
+        
+        // TODO: make sure you test for valid input
+        //guard let inputValue = Double(inputValue) else { return "Invalid Input" }
+    
+       // need to make sure there is a number in here...
+        
+        if !inputValue.isNaN && inputValue > 0 {
             // convert
-            switch conversionType {
+            switch selectedConversionType {
                 case "distance":
-                    newAmount = convertDistance()
+                    
+                    return convertDistance()
                 case "time":
-                    newAmount = convertTime()
-                case "temp" :
-                    newAmount = convertTemp()
-                case "volume" :
-                    newAmount = convertVolume()
+                    return convertTime()
+                case "temp":
+                    return  convertTemp()
+                case "volume":
+                    return  convertVolume()
                 default:
-                    newAmount = 0.0
+                    newAmount =  0.0
             }
-            
-            // TODO: deal with the edge case of negative numbers
-            return newAmount
+        } // TODO: deal with the edge case of alpha/negative numbers
+        else {
+            newAmount = -42
         }
-        return amount
+        return newAmount
+        //String(format: "%.2f", newAmount)
+        //return String(format: "%.2f", convert(value: value, from: selectedFromUnit, to: selectedToUnit, type: selectedConversionType))
+        //return inputValue
     }
   
     func convertVolume() -> Double {
-        
+//    LiquidVolume: milliliters, liters <--> cups, pints, or gallons.
+//     US gal lqd =L * 0.26417
         return 0.0
     }
     
     func convertTemp() -> Double {
-        
+        // can probably pass in a tuple here
+        // Temp: Celsius, Fahrenheit
+        // C->F : (x C × 9/5) + 32 = 32 F
+        // F -> C : (x F − 32) × 5/9 = -17.78 C
+        // C -> K : x C + 273.15 = 278.15K
+        // F -> K : (x F − 32) × 5/9 + 273.15 = 258.15K
+
         return 0.0
     }
     
@@ -128,15 +121,15 @@ struct ContentView: View {
         // convert to seconds
         switch convertFrom {
             case "days":
-                    convertedTime = amount * hoursInDay * minutesInHour * secondsInMinute
+                    convertedTime = inputValue * hoursInDay * minutesInHour * secondsInMinute
             case "hours" :
-                    convertedTime = amount * minutesInHour * secondsInMinute
+                    convertedTime = inputValue * minutesInHour * secondsInMinute
             case "minutes" :
-                    convertedTime = amount * secondsInMinute
+                    convertedTime = inputValue * secondsInMinute
             case "seconds" :
-                    convertedTime = amount
+                    convertedTime = inputValue
             default:
-                    return amount
+                    return inputValue * hoursInDay * minutesInHour * secondsInMinute
         }
         
         switch convertTo {
@@ -149,7 +142,7 @@ struct ContentView: View {
             case "seconds" :
                     convertedTime *= 1
             default:
-                return amount
+                return convertedTime/secondsInMinute/minutesInHour/hoursInDay
         }
         return convertedTime
     }
@@ -158,7 +151,15 @@ struct ContentView: View {
     func convertDistance () ->  Double {
         // convert to inches, regardless of system
         
-        var convertedDistance = amount
+//        Parsecs: Miles
+//        1pc = 19173501441011 mi
+//        1pc = 30856800000000 km
+//        
+//        Kilometers = Parsecs * 30856800000000
+//        Miles = Parsecs * 19173501441011
+        
+        
+        var convertedDistance = inputValue
         
         let inchesInFoot : Double = 12
         let feetInYard : Double = 3
@@ -177,6 +178,12 @@ struct ContentView: View {
         //         .  multiply the number of meters by this .
         
         // convert to smallet denominator, inches or mm then multiply
+        
+//        var convertedValue: String {
+//              guard let value = Double(inputValue) else { return "Invalid Input" }
+//              return String(format: "%.2f", convert(value: value, from: selectedFromUnit, to: selectedToUnit, type: selectedConversionType))
+//          }
+        
         switch convertFrom {
             // convert everything to inches
             case "miles":
@@ -191,6 +198,8 @@ struct ContentView: View {
             case "inches":
                 convertedDistance *= 1
             
+            // print out the baseline metric ??
+            
             // converts back to metric : should take inches and conver to mm
             // multiply by 25.4
             case "kilometers":
@@ -202,7 +211,7 @@ struct ContentView: View {
             case "millimeters":
                 convertedDistance /=  mmToInches
             default:
-                convertedDistance = amount
+                convertedDistance = inputValue // miles / miles
             }
 
         //Imperial to Metric : CONVERT inches to -----------
@@ -234,14 +243,7 @@ struct ContentView: View {
         }
         return convertedDistance
     }
-    
-    /*:
-     https://stackoverflow.com/questions/57518852/swiftui-picker-onchange-or-equivalent
-     https://stackoverflow.com/questions/77100045/how-to-dynamically-populate-a-swiftui-picker-segmented-control
-     ForEach(Array(colors.enumerated()), id: \.element) { index, color in
-         Text(color).tag(index)
-     }
-     */
+
     
     var body: some View {
        
@@ -249,8 +251,8 @@ struct ContentView: View {
         NavigationStack{
             // check splitting form
             Form{
-                Section("Select type of measurement conversion:") {
-                    Picker("Conversion", selection: $conversionType) {
+                Section("Select Conversion Type:") {
+                    Picker("Conversion", selection: $selectedConversionType) {
                         ForEach(conversionTypes, id: \.self) {
                             Text($0)
                         }
@@ -260,37 +262,43 @@ struct ContentView: View {
                 }
                 .navigationTitle("weConvert")
                 
-               
                 
                 Section("Select starting unit type:"){
                     // select starting units : based on conversionType variable
                    
                     Picker("Convert from:", selection: $convertFrom) {
-                        ForEach(typeArray, id: \.self) {
+                        ForEach(selectedUnits, id: \.self) {
                             Text($0)
                         }
                     }
                     
                 }
+              
+                
                 Section("Select desired unit type:"){
                     // select desired units : based on conversionType variable
                     Picker("Convert to:", selection: $convertTo) {
-                        ForEach(typeArray, id: \.self) {
+                        ForEach(selectedUnits, id: \.self) {
                             Text($0)
                         }
                     }
-                    //.pickerStyle(WheelPickerStyle())
                 }
                 Section("Enter amount:"){
                     // enter amount
-                    TextField("Amount", value: $amount, format: .number)
+                    TextField("Amount", value: $inputValue, format: .number)
+                        .keyboardType(.decimalPad)
                 }
-                Section("Converted to x"){
+                Section("Converted Value"){
                     // Result
                     Text(convertFrom)
                     Text(convertTo)
-                    Text(convertedAmount, format: .number)
+                    Text(convertedValue, format: .number)
+                   
+//                    TextField("Baseline Amount", value: $baselineAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+//                        .keyboardType(.decimalPad)
+//                        .focused($amountIsFocused)
                 }
+              
             } // /form
         }
     }
