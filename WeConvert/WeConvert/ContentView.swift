@@ -69,6 +69,7 @@ struct ContentView: View {
 
        // need to make sure there is a number in here...
         // inputValue?
+        // selectedResult?.name ?? ""
         // if let inputValue = inputValue {
         if !inputValue.isNaN && inputValue > 0 {
             // convert
