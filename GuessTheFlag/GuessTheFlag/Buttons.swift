@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct Buttons: View {
+    
+    @State private var showingAlert = false
+    @State private var showingAlert2 = false
+    @State private var showingAlert3 = false
+    
+    
     var body: some View {
        
         VStack{
@@ -54,6 +60,42 @@ struct Buttons: View {
                     .padding()
                     .foregroundStyle(.white)
                     .background(.red)
+            }
+            
+            
+            
+            
+            Spacer()
+            Button("Show Alert") {
+                        showingAlert = true
+                    }
+                    .alert("Important message", isPresented: $showingAlert) {
+                        Button("OK") {
+                            // nothing needed here because it dismissees the alert
+                        }
+                    }
+            
+            Spacer()
+            Button("Some Stuff"){
+                showingAlert2 = true
+            }
+                .alert("Important message", isPresented: $showingAlert2) {
+                    Button("Delete", role: .destructive) { }
+                    Button("Cancel", role: .cancel) { }
+                }
+            
+            Spacer()
+            
+            Button("Show Alert Again") {
+                showingAlert3 = true
+            }
+            
+                .alert("Important message", isPresented: $showingAlert3) {
+                    Button("OK", role: .cancel) {
+                        // nothing needed here because it dismissees the alert
+                    }
+            } message: {
+                Text("Please read this.")
             }
         }
         

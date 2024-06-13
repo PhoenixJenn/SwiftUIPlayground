@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    
     var body: some View {
         
         
@@ -15,10 +17,7 @@ struct ContentView: View {
         VStack(alignment: .leading, spacing: 20) {
         
             
-            Spacer()
-            
-            
-            Spacer()
+           
         }
         .padding()
         
