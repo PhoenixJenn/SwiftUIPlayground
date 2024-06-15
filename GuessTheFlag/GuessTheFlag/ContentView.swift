@@ -21,6 +21,10 @@ struct ContentView: View {
 /*:
  two labels telling the user what to do,
  three image buttons showing three world flags.
+ 
+ for _ in 1...3 {
+     print(Int.random(in: 1..<100))
+ }
  */
     
     var body: some View {
@@ -100,10 +104,7 @@ struct ContentView: View {
                     Text("Your score is now \(score). Counter=\(counter)")
             }
             .alert("Play Again?", isPresented: $startOver) {
-                Button("Ok") {
-                    score = 0
-                    showingScore = true
-                }
+                Button("Ok", action: resetGame)
                 Button("Cancel", role: .cancel) { }
             }
             
@@ -131,7 +132,10 @@ struct ContentView: View {
             startOver  = true
         }
     }
-    
+    func resetGame(){
+        score = 0
+        showingScore = true
+    }
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
