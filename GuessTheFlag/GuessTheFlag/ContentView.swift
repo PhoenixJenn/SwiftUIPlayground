@@ -9,8 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showingScore = false
+    @State private var startOver = false
     @State private var scoreTitle = ""
-    
+    @State private var score : Int = 0
+    @State private var counter : Int = 0
+    @State private var gameOver : String = ""
     // .shuffled
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"].shuffled()
     
@@ -72,6 +75,7 @@ struct ContentView: View {
                             Image(countries[number])
                                 .clipShape(.capsule)
                                 .shadow(radius: 5)
+                                .shadow(color:Color.yellow, radius:10)
                         }
                     } //foreach
                     
@@ -84,7 +88,7 @@ struct ContentView: View {
                 
                 Spacer()
                 Spacer()
-                Text("Score: ???")
+                Text("Score: \(score) \(gameOver)")
                     .foregroundStyle(.white)
                     .font(.title.bold())
                 Spacer()
@@ -93,7 +97,14 @@ struct ContentView: View {
             .alert(scoreTitle, isPresented: $showingScore) {
                 Button("Continue", action: askQuestion)
             } message: {
-                Text("Your score is ???")
+                    Text("Your score is now \(score). Counter=\(counter)")
+            }
+            .alert("Play Again?", isPresented: $startOver) {
+                Button("Ok") {
+                    score = 0
+                    showingScore = true
+                }
+                Button("Cancel", role: .cancel) { }
             }
             
           
@@ -103,13 +114,22 @@ struct ContentView: View {
         
     
     func flagTapped(_ number: Int) {
+        counter += 1
+        
         if number == correctAnswer {
-            scoreTitle = "Correct"
+            scoreTitle = "Correct, gain a point"
+            score += 1
         } else {
-            scoreTitle = "Wrong"
+            scoreTitle = "Wrong, that's the flag of \(countries[correctAnswer]). Lose a point"
+            score -= 1
         }
-
-        showingScore = true
+        
+        if counter < 8 {
+            showingScore = true
+        } else {
+            gameOver = (" Game Over.")
+            startOver  = true
+        }
     }
     
     func askQuestion() {
