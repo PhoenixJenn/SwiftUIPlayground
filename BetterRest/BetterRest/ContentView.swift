@@ -14,12 +14,16 @@ import SwiftUI
  */
 struct ContentView: View {
     
+    @State private var sleepAmount = 8.0
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
+            
+            //constrains sleep to 4-12 hrs
+//            Stepper("\(sleepAmount) hours", value: $sleepAmount, in: 4...12)
+            
+            Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
+           
             Text("Hello, world!")
         }
         .padding()
