@@ -12,6 +12,7 @@ import SwiftUI
  When do they want to wake up?
  Roughly how many hours of sleep do they want?
  How many cups of coffee do they drink per day?
+ https://www.hackingwithswift.com/books/ios-swiftui/connecting-swiftui-to-core-ml
  */
 struct ContentView: View {
     
