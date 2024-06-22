@@ -7,24 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		82E429412C2120B300FFB9D6 /* BetterRestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E429402C2120B300FFB9D6 /* BetterRestApp.swift */; };
-		82E429432C2120B300FFB9D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E429422C2120B300FFB9D6 /* ContentView.swift */; };
-		82E429452C2120B400FFB9D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E429442C2120B400FFB9D6 /* Assets.xcassets */; };
-		82E429482C2120B400FFB9D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E429472C2120B400FFB9D6 /* Preview Assets.xcassets */; };
-		82E4294F2C23246D00FFB9D6 /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 82E4294E2C23246D00FFB9D6 /* SleepCalculator.mlmodel */; };
+		82E4295D2C267B1D00FFB9D6 /* WordScrambleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E4295C2C267B1D00FFB9D6 /* WordScrambleApp.swift */; };
+		82E4295F2C267B1D00FFB9D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E4295E2C267B1D00FFB9D6 /* ContentView.swift */; };
+		82E429612C267B1E00FFB9D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E429602C267B1E00FFB9D6 /* Assets.xcassets */; };
+		82E429642C267B1E00FFB9D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E429632C267B1E00FFB9D6 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		82E4293D2C2120B300FFB9D6 /* BetterRest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterRest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		82E429402C2120B300FFB9D6 /* BetterRestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterRestApp.swift; sourceTree = "<group>"; };
-		82E429422C2120B300FFB9D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		82E429442C2120B400FFB9D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		82E429472C2120B400FFB9D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		82E4294E2C23246D00FFB9D6 /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = "<group>"; };
+		82E429592C267B1D00FFB9D6 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		82E4295C2C267B1D00FFB9D6 /* WordScrambleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleApp.swift; sourceTree = "<group>"; };
+		82E4295E2C267B1D00FFB9D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		82E429602C267B1E00FFB9D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		82E429632C267B1E00FFB9D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		82E4293A2C2120B300FFB9D6 /* Frameworks */ = {
+		82E429562C267B1D00FFB9D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -34,38 +32,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		82E429342C2120B300FFB9D6 = {
+		82E429502C267B1D00FFB9D6 = {
 			isa = PBXGroup;
 			children = (
-				82E4293F2C2120B300FFB9D6 /* BetterRest */,
-				82E4293E2C2120B300FFB9D6 /* Products */,
+				82E4295B2C267B1D00FFB9D6 /* WordScramble */,
+				82E4295A2C267B1D00FFB9D6 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		82E4293E2C2120B300FFB9D6 /* Products */ = {
+		82E4295A2C267B1D00FFB9D6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				82E4293D2C2120B300FFB9D6 /* BetterRest.app */,
+				82E429592C267B1D00FFB9D6 /* WordScramble.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		82E4293F2C2120B300FFB9D6 /* BetterRest */ = {
+		82E4295B2C267B1D00FFB9D6 /* WordScramble */ = {
 			isa = PBXGroup;
 			children = (
-				82E429402C2120B300FFB9D6 /* BetterRestApp.swift */,
-				82E429422C2120B300FFB9D6 /* ContentView.swift */,
-				82E429442C2120B400FFB9D6 /* Assets.xcassets */,
-				82E4294E2C23246D00FFB9D6 /* SleepCalculator.mlmodel */,
-				82E429462C2120B400FFB9D6 /* Preview Content */,
+				82E4295C2C267B1D00FFB9D6 /* WordScrambleApp.swift */,
+				82E4295E2C267B1D00FFB9D6 /* ContentView.swift */,
+				82E429602C267B1E00FFB9D6 /* Assets.xcassets */,
+				82E429622C267B1E00FFB9D6 /* Preview Content */,
 			);
-			path = BetterRest;
+			path = WordScramble;
 			sourceTree = "<group>";
 		};
-		82E429462C2120B400FFB9D6 /* Preview Content */ = {
+		82E429622C267B1E00FFB9D6 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				82E429472C2120B400FFB9D6 /* Preview Assets.xcassets */,
+				82E429632C267B1E00FFB9D6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -73,39 +70,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		82E4293C2C2120B300FFB9D6 /* BetterRest */ = {
+		82E429582C267B1D00FFB9D6 /* WordScramble */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 82E4294B2C2120B400FFB9D6 /* Build configuration list for PBXNativeTarget "BetterRest" */;
+			buildConfigurationList = 82E429672C267B1E00FFB9D6 /* Build configuration list for PBXNativeTarget "WordScramble" */;
 			buildPhases = (
-				82E429392C2120B300FFB9D6 /* Sources */,
-				82E4293A2C2120B300FFB9D6 /* Frameworks */,
-				82E4293B2C2120B300FFB9D6 /* Resources */,
+				82E429552C267B1D00FFB9D6 /* Sources */,
+				82E429562C267B1D00FFB9D6 /* Frameworks */,
+				82E429572C267B1D00FFB9D6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = BetterRest;
-			productName = BetterRest;
-			productReference = 82E4293D2C2120B300FFB9D6 /* BetterRest.app */;
+			name = WordScramble;
+			productName = WordScramble;
+			productReference = 82E429592C267B1D00FFB9D6 /* WordScramble.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		82E429352C2120B300FFB9D6 /* Project object */ = {
+		82E429512C267B1D00FFB9D6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					82E4293C2C2120B300FFB9D6 = {
+					82E429582C267B1D00FFB9D6 = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
-			buildConfigurationList = 82E429382C2120B300FFB9D6 /* Build configuration list for PBXProject "BetterRest" */;
+			buildConfigurationList = 82E429542C267B1D00FFB9D6 /* Build configuration list for PBXProject "WordScramble" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,43 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = 82E429342C2120B300FFB9D6;
-			productRefGroup = 82E4293E2C2120B300FFB9D6 /* Products */;
+			mainGroup = 82E429502C267B1D00FFB9D6;
+			productRefGroup = 82E4295A2C267B1D00FFB9D6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				82E4293C2C2120B300FFB9D6 /* BetterRest */,
+				82E429582C267B1D00FFB9D6 /* WordScramble */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		82E4293B2C2120B300FFB9D6 /* Resources */ = {
+		82E429572C267B1D00FFB9D6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82E429482C2120B400FFB9D6 /* Preview Assets.xcassets in Resources */,
-				82E429452C2120B400FFB9D6 /* Assets.xcassets in Resources */,
+				82E429642C267B1E00FFB9D6 /* Preview Assets.xcassets in Resources */,
+				82E429612C267B1E00FFB9D6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		82E429392C2120B300FFB9D6 /* Sources */ = {
+		82E429552C267B1D00FFB9D6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82E429432C2120B300FFB9D6 /* ContentView.swift in Sources */,
-				82E4294F2C23246D00FFB9D6 /* SleepCalculator.mlmodel in Sources */,
-				82E429412C2120B300FFB9D6 /* BetterRestApp.swift in Sources */,
+				82E4295F2C267B1D00FFB9D6 /* ContentView.swift in Sources */,
+				82E4295D2C267B1D00FFB9D6 /* WordScrambleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		82E429492C2120B400FFB9D6 /* Debug */ = {
+		82E429652C267B1E00FFB9D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -212,7 +208,7 @@
 			};
 			name = Debug;
 		};
-		82E4294A2C2120B400FFB9D6 /* Release */ = {
+		82E429662C267B1E00FFB9D6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -268,14 +264,14 @@
 			};
 			name = Release;
 		};
-		82E4294C2C2120B400FFB9D6 /* Debug */ = {
+		82E429682C267B1E00FFB9D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BetterRest/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"WordScramble/Preview Content\"";
 				DEVELOPMENT_TEAM = 3TFDS5G89L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -289,7 +285,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.augmentyourexperience.BetterRest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.augmentyourexperience.WordScramble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -297,14 +293,14 @@
 			};
 			name = Debug;
 		};
-		82E4294D2C2120B400FFB9D6 /* Release */ = {
+		82E429692C267B1E00FFB9D6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BetterRest/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"WordScramble/Preview Content\"";
 				DEVELOPMENT_TEAM = 3TFDS5G89L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -318,7 +314,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.augmentyourexperience.BetterRest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.augmentyourexperience.WordScramble;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -329,25 +325,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		82E429382C2120B300FFB9D6 /* Build configuration list for PBXProject "BetterRest" */ = {
+		82E429542C267B1D00FFB9D6 /* Build configuration list for PBXProject "WordScramble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				82E429492C2120B400FFB9D6 /* Debug */,
-				82E4294A2C2120B400FFB9D6 /* Release */,
+				82E429652C267B1E00FFB9D6 /* Debug */,
+				82E429662C267B1E00FFB9D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		82E4294B2C2120B400FFB9D6 /* Build configuration list for PBXNativeTarget "BetterRest" */ = {
+		82E429672C267B1E00FFB9D6 /* Build configuration list for PBXNativeTarget "WordScramble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				82E4294C2C2120B400FFB9D6 /* Debug */,
-				82E4294D2C2120B400FFB9D6 /* Release */,
+				82E429682C267B1E00FFB9D6 /* Debug */,
+				82E429692C267B1E00FFB9D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 82E429352C2120B300FFB9D6 /* Project object */;
+	rootObject = 82E429512C267B1D00FFB9D6 /* Project object */;
 }

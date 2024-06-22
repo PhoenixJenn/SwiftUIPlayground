@@ -16,7 +16,9 @@ import SwiftUI
  */
 struct ContentView: View {
     
-    @State private var wakeUp = Date.now
+ 
+    
+    @State private var wakeUp = defaultWakeTime //Date.now
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 1
     
@@ -25,10 +27,19 @@ struct ContentView: View {
     @State private var showingAlert = false
     
     var components = DateComponents()
+    static var defaultWakeTime: Date {
+        var components = DateComponents()
+        components.hour = 7
+        components.minute = 0
+        return Calendar.current.date(from: components) ?? .now
+    }
+
+    
+ 
        
     var body: some View {
         NavigationView {
-            VStack {
+            Form {
                 // why won't this align left
                 HStack{
                     Text("Today's Date")
@@ -38,25 +49,29 @@ struct ContentView: View {
                 
                 
                 Spacer()
-                Text("When do you want to wake up?")
-                    .font(.headline)
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("When do you want to wake up?")
+                        .font(.headline)
+                    
+                    DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
+                        .labelsHidden()
+                }
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Desired amount of sleep")
+                        .font(.headline)
+                    
+                    Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
+                }
                 
-                DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
-                    .labelsHidden()
-                
-                
-                Text("Desired amount of sleep")
-                    .font(.headline)
-                
-                Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
-                
-                
-                Text("Daily coffee intake")
-                    .font(.headline)
-                
-                Stepper("\(coffeeAmount) cup(s)", value: $coffeeAmount, in: 1...20)
-                
-            } // end Vstack
+                VStack(alignment: .leading, spacing: 0)  {
+                    Text("Daily coffee intake")
+                        .font(.headline)
+                    
+                    Stepper("^[\(coffeeAmount) cup](inflect: true)", value: $coffeeAmount, in: 1...20)
+                }
+               
+
+            } // end Form
             .alert(alertTitle, isPresented: $showingAlert){
                 Button("ok"){}
                 } message: {
