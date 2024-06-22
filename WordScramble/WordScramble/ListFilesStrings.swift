@@ -68,6 +68,7 @@ struct ListFilesStrings: View {
 //                    c
 //                    """
 //        let letters2 = input.components(separatedBy: "\n")
+    
 //        let letter = letters2.randomElement()
 //        let trimmed = letter?.trimmingCharacters(in: .whitespacesAndNewlines)
 //        let word = "swift"
