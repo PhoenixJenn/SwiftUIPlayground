@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var animationAmount = 1.0
+    @State private var animationSkewAmount = 0.0
     
     var body: some View {
         
@@ -34,7 +35,16 @@ struct ContentView: View {
                         .scaleEffect(animationAmount)
 
             
-            
+            Button("Tap Me2") {
+                        withAnimation(.spring(duration: 1, bounce: 0.5)) {
+                            animationSkewAmount += 360
+                        }
+                    }
+                    .padding(50)
+                    .background(.blue)
+                    .foregroundStyle(.white)
+                    .clipShape(.circle)
+                    .rotation3DEffect(.degrees(animationSkewAmount), axis: (x: 0, y: 1, z: 0))
         }
     }
 }
