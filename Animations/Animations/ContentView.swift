@@ -4,6 +4,11 @@
 //
 //  Created by Jennifer Lee on 6/25/24.
 //
+// concept one: modifier order matters, because SwiftUI wraps views with modifiers in the order they are applied.
+//Concept two:  we can apply an animation() modifier to a view in order to have it implicitly animate changes.
+
+// TODO: Turn this into a more cohesive demo of gestures and animations
+// TODO: create a nav 
 
 import SwiftUI
 
@@ -13,10 +18,10 @@ struct ContentView: View {
     
     var body: some View {
         
-        print(animationAmount)
+       // print(animationAmount)
 
-        return VStack {
-        
+        //return VStack {
+            VStack {
             Spacer()
             Stepper("Scale amount", value: $animationAmount.animation(
                 .easeInOut(duration: 1)
