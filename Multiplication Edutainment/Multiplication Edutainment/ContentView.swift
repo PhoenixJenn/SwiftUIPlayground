@@ -30,20 +30,129 @@
  When it comes to asking questions, use another state property called questionNumber or similar, which is an integer pointing at some position in your question array.
  You can get user input either using buttons on the screen, like a calculator, or using a number pad text field – whichever you prefer.
  If you intend to pass a closure into a view’s initializer for later use, Xcode will force you to mark it as @escaping. This means “will be used outside of the current method.”
+ 
+ 
+ for _ in 1...3 {
+     print(Int.random(in: 1..<100))
+ 
  */
 
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var startNumber : Int = 1
+    @State private var endNumber : Int = 12
+    @State private var fill = false
+    @State private var isPlaying = false
+    @State private var startNum = true
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        
+//        Button( action: {self.isPlaying.toggle()} )
+//        {
+//            Image(systemName: self.isPlaying == true ? "pause.fill" : "play.fill")
+//        }
+        
+        //let numberRange = startNumber...endNumber
+        
+        ZStack{
+            LinearGradient(colors: [.blue, .white], startPoint: .top, endPoint: .bottom)
+            .ignoresSafeArea()
+            Text(" Multiplication Tables ")
+                .font(.largeTitle)
+        } // zstack
+        
+            VStack{
+                // add logic to know which number they are choosing (start or end)
+                Form{
+                    Text("Tables from \(startNumber)-\(endNumber)")
+                    //https://developer.apple.com/documentation/swiftui/picker
+                    Picker("Select", selection: $startNum) {
+                            Text("Start Number")
+                            Text("End Number")
+                    
+                    }
+                    .pickerStyle(.segmented)
+                }
+                
+                    
+                
+                HStack(spacing:1) {
+                    ForEach (1..<13){
+                        number in
+                        Button(action: {evalSelection(choice: number)} ) {
+                            Image(systemName: (startNumber == number || endNumber == number) ? "\(number).circle" : "\(number).circle.fill")
+                            // .foregroundStyle(.black) // change color based on selection
+                                  // only add square.fill if selected
+                        }.font(.system(size: 25))
+                    }
+                } // hstack
+                .alert("\(startNumber)", isPresented: $isPlaying) {
+                    Button("Cancel", role: .cancel) { }
+                }
+                
+                Spacer()
+                
+//                HStack(spacing:1) {
+//                    ForEach (1..<13){
+//                        number in
+//                        Button() {
+//                             evalSelection(choice: number)
+//                            
+//                        } label: {
+//                            Image(systemName: (startNumber == number || endNumber == number) ? "\(number).square.fill" : "\(number).square")
+//                            
+//                           
+//                                  // only add square.fill if selected
+//                               
+//                        }.font(.system(size: 25))
+//                    }
+//                } // hstack
+                
+                Spacer()
+                
+            } // vstack
+      Spacer()
+        
+      
+       
     }
+        func evalSelection(choice: Int){
+            if (choice < startNumber || (choice > startNumber && choice < endNumber)){
+                startNumber = choice
+               // isPlaying=true
+            } else if (choice > endNumber || (choice < endNumber && choice > startNumber)){
+                endNumber = choice
+              //  isPlaying=true
+            } else {
+               // isPlaying = false
+            }
+            
+            // when selected,change image to number.square.fill
+            // if less than lowest,
+            // flip lowest to empty square
+            // set lowest to new number
+            // if higher than highest
+            // flip highest to empty
+            // set highest to new number
+        }
+        
+//        VStack{
+//             Stepper("\(startNumber.formatted()) ", value: $startNumber, in: 1...12, step: 1)
+//           Text("End:")
+//               .font(.headline)
+//            Stepper("\(endNumber.formatted()) ", value: $endNumber, in: numberRange, step: 1)
+//        }
+//        VStack {
+//            Image(systemName: "globe")
+//                .imageScale(.large)
+//                .foregroundStyle(.tint)
+//            Text("Hello, world!")
+//        }
+//        .padding()
+   
+    
+   
 }
 
 #Preview {
