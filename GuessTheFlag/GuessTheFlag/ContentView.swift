@@ -5,6 +5,17 @@
 //  Created by Jennifer Lee on 6/12/24.
 //
 
+
+/*:
+ CHALLENGE for Project 6:
+ [x]When you tap a flag, make it spin around 360 degrees on the Y axis.
+ [x]Make the other two buttons fade out to 25% opacity.
+ [x]Add a third effect of your choosing to the two flags the user didn’t choose – maybe make them scale down? Or flip in a different direction? Experiment!
+ These challenges aren’t easy. They take only a few lines of code, but you’ll need to think carefully about what modifiers you use to get the exact animations you want.
+ Try adding an @State property to track which flag the user tapped on (selectedFlag), then using that inside conditional modifiers for rotation, fading, and whatever you decide for the third challenge.
+ 
+ 
+ */
 import SwiftUI
 
 struct ContentView: View {
@@ -14,6 +25,9 @@ struct ContentView: View {
     @State private var score : Int = 0
     @State private var counter : Int = 0
     @State private var gameOver : String = ""
+    @State private var animationSkewAmount = 0.0
+    @State private var showAnimation = false
+    @State private var selectedFlag = -1
     // .shuffled
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"].shuffled()
     
@@ -58,7 +72,7 @@ struct ContentView: View {
                 
                 
                 VStack(spacing: 10) {
-                    VStack(alignment: .leading, spacing: 20) {
+                    VStack(alignment: .leading, spacing: 30) {
                         Text("Tap the flag of:")
                             .foregroundStyle(.white)
                             .font(.subheadline.weight(.heavy))
@@ -73,6 +87,9 @@ struct ContentView: View {
                     ForEach(0..<3) { number in
                         Button() {
                             // flag was tapped
+//                                if number == correctAnswer {
+//                                    animationSkewAmount += 360
+//                                }
                             flagTapped(number)
                             
                         } label: {
@@ -81,6 +98,12 @@ struct ContentView: View {
                                 .shadow(radius: 5)
                                 .shadow(color:Color.yellow, radius:10)
                         }
+                        .rotation3DEffect(.degrees(selectedFlag == number ? 360 : 0),
+                                                                      axis: (x: 0, y:1, z:0))
+                        .opacity((selectedFlag == number || selectedFlag == -1) ? 1 : 0.25)
+                        .animation(.default, value: selectedFlag )
+                        .scaleEffect((selectedFlag == number || selectedFlag == -1) ? 1 : 0.75)
+
                     } //foreach
                     
                 } // Vstack
@@ -116,9 +139,10 @@ struct ContentView: View {
     
     func flagTapped(_ number: Int) {
         counter += 1
-        
+        selectedFlag = number
         if number == correctAnswer {
             scoreTitle = "Correct, gain a point"
+            //enabled=true
             score += 1
         } else {
             scoreTitle = "Wrong, that's the flag of \(countries[correctAnswer]). Lose a point"
@@ -139,6 +163,7 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        selectedFlag = -1
     }
     
 } //struct
