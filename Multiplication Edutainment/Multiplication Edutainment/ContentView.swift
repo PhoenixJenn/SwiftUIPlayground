@@ -50,7 +50,9 @@ struct ContentView: View {
     @State private var answer : Int = 0
     @State private var num1 : Int = 1
     @State private var num2 : Int = 1
+    @State private var score : Int = 0
     @State private var message : String = ""
+    
     
     @FocusState private var answerIsFocused: Bool
     
@@ -105,7 +107,7 @@ struct ContentView: View {
                           .font(.largeTitle)
                           .frame(width: 70, height: 90)
                   .onSubmit {
-                        doNothing()
+                      checkAnswer()
                           }
             }
             
@@ -117,7 +119,7 @@ struct ContentView: View {
                 // add logic to know which number they are choosing (start or end)
                 Spacer()
                 Spacer()
-                    
+                Spacer()
                     //https://developer.apple.com/documentation/swiftui/picker
                     Picker("Select", selection: $startEndSelection) {
                         ForEach(startEnd, id: \.self) {
@@ -126,21 +128,28 @@ struct ContentView: View {
                     }
                     .pickerStyle(.segmented)
                
+                Spacer()
+                
                 HStack(spacing:1) {
                     ForEach (1..<13){
                         number in
                         Button(action: {evalSelection(choice: number)} ) {
-                            Image(systemName: (startNumber == number || endNumber == number) ? "\(number).circle" : "\(number).circle.fill")
-                                .foregroundStyle((startNumber == number || endNumber == number) ? .blue : .red)
+                            Image(systemName: (number < startNumber ||  number > endNumber) ? "\(number).circle" : "\(number).circle.fill")
+                                .foregroundStyle((startNumber == number || endNumber == number || number < startNumber || number > endNumber) ? .blue : .red)
                             // .foregroundStyle(.black) // change color based on selection
                                   // only add square.fill if selected
                         }.font(.system(size: 25))
                     }
+                    
+                   
                 } // hstack
-                .alert("\(startNumber): \(endNumber)= \(startEndSelection) answer: \(answer) : \(message)", isPresented: $isPlaying) {
-                    Button("Cancel", role: .cancel) { }
+                //\(startNumber): \(endNumber)= \(startEndSelection)
+                // answer: \(answer) :
+                .alert("\(message)", isPresented: $isPlaying) {
+                    Button("OK", role: .cancel) { }
                 }
-                
+                Spacer()
+                Text("Score: \(score)")
                
                 
             } // vstack
@@ -177,7 +186,12 @@ struct ContentView: View {
        
     }
         
-        
+    func doNothing(){
+        score = 0
+        startNumber = 1
+        endNumber = 12
+        answer = 0
+    }
         func evalSelection(choice: Int){
             // all included number tables will be solid
             // when selected, change start or end to number.square and flip other one to .fill
@@ -208,16 +222,24 @@ struct ContentView: View {
         // num2 = pick a random second number between 1 and 12
         num1 = Int.random(in: startNumber ... endNumber)
         num2 = Int.random(in: 1 ... 12)
+        answer = 0
         
     }
         
-        func doNothing(){
+        func checkAnswer(){
            // do nothing
             if (num1 * num2 == answer){
                 // add formula to string array
-                
+               // equations[num1] = num2
+                score += 1
+                message = "Great answer!"
+              
+            } else {
+                message = "Incorrect. The answer is: \(num1) x \(num2) = " + String(num1 * num2)
             }
+            
             isPlaying=true
+            setupGame()
         }
         
         
