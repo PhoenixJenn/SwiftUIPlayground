@@ -46,96 +46,180 @@ struct ContentView: View {
     @State private var fill = false
     @State private var isPlaying = false
     @State private var startNum = true
+    @State private var startEndSelection = "Start Number"
+    @State private var answer : Int = 0
+    @State private var num1 : Int = 1
+    @State private var num2 : Int = 1
+    @State private var message : String = ""
+    
+    @FocusState private var answerIsFocused: Bool
+    
+    var startEnd = ["Start Number", "End Number"]
+   
+    
     var body: some View {
+        
         
 //        Button( action: {self.isPlaying.toggle()} )
 //        {
 //            Image(systemName: self.isPlaying == true ? "pause.fill" : "play.fill")
 //        }
         
-        //let numberRange = startNumber...endNumber
-        
+           
         ZStack{
             LinearGradient(colors: [.blue, .white], startPoint: .top, endPoint: .bottom)
             .ignoresSafeArea()
             Text(" Multiplication Tables ")
                 .font(.largeTitle)
+                .bold()
+            
+            
         } // zstack
+        
+        VStack{
+            // Play Space
+            Text("Tables from \(startNumber)-\(endNumber)")
+            Spacer()
+            Spacer()
+            HStack{
+                Image(systemName:"\(num1).square.fill")
+                    .font(.system(size:60))
+                    .foregroundStyle(.red)
+                // First Number
+                Image(systemName:"multiply")
+                    .font(.system(size:30))
+                // Second Number
+                Image(systemName:"\(num2).square.fill")
+                    .font(.system(size:60))
+                    .foregroundStyle(.red)
+                Image(systemName:"equal")
+                    .font(.system(size:30))
+                
+                
+                TextField("Amount", value: $answer, format: .number, prompt: Text("Answer"))
+                    .keyboardType(.decimalPad)
+                    .focused($answerIsFocused)
+                    .foregroundColor(.blue)
+                          //.background(.yellow)
+                          .border(Color.red)
+                          .font(.largeTitle)
+                          .frame(width: 70, height: 90)
+                  .onSubmit {
+                        doNothing()
+                          }
+            }
+            
+            Spacer()
+            
+        }
         
             VStack{
                 // add logic to know which number they are choosing (start or end)
-                Form{
-                    Text("Tables from \(startNumber)-\(endNumber)")
-                    //https://developer.apple.com/documentation/swiftui/picker
-                    Picker("Select", selection: $startNum) {
-                            Text("Start Number")
-                            Text("End Number")
+                Spacer()
+                Spacer()
                     
+                    //https://developer.apple.com/documentation/swiftui/picker
+                    Picker("Select", selection: $startEndSelection) {
+                        ForEach(startEnd, id: \.self) {
+                                Text($0)
+                        }
                     }
                     .pickerStyle(.segmented)
-                }
-                
-                    
-                
+               
                 HStack(spacing:1) {
                     ForEach (1..<13){
                         number in
                         Button(action: {evalSelection(choice: number)} ) {
                             Image(systemName: (startNumber == number || endNumber == number) ? "\(number).circle" : "\(number).circle.fill")
+                                .foregroundStyle((startNumber == number || endNumber == number) ? .blue : .red)
                             // .foregroundStyle(.black) // change color based on selection
                                   // only add square.fill if selected
                         }.font(.system(size: 25))
                     }
                 } // hstack
-                .alert("\(startNumber)", isPresented: $isPlaying) {
+                .alert("\(startNumber): \(endNumber)= \(startEndSelection) answer: \(answer) : \(message)", isPresented: $isPlaying) {
                     Button("Cancel", role: .cancel) { }
                 }
                 
-                Spacer()
-                
-//                HStack(spacing:1) {
-//                    ForEach (1..<13){
-//                        number in
-//                        Button() {
-//                             evalSelection(choice: number)
-//                            
-//                        } label: {
-//                            Image(systemName: (startNumber == number || endNumber == number) ? "\(number).square.fill" : "\(number).square")
-//                            
-//                           
-//                                  // only add square.fill if selected
-//                               
-//                        }.font(.system(size: 25))
-//                    }
-//                } // hstack
-                
-                Spacer()
+               
                 
             } // vstack
-      Spacer()
-        
+  
+
+        NavigationStack {
+            Spacer()
+           // Text("Hello, World!").padding()
+                //.navigationTitle("SwiftUI")
+                .toolbar {
+                   
+                    ToolbarItem(placement: .bottomBar) {
+                        Button("Start Game", action: setupGame)
+                        
+                    }
+//                    ToolbarItemGroup(placement: .bottomBar) {
+//                        Button("First") {
+//                            print("Pressed")
+//                        }
+//
+//                        Button("Second") {
+//                            print("Pressed")
+//                        }
+//                    }
+                    
+                }
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) {
+                        Button("Reset Range", action: doNothing)
+                    }
+                }
+        }
       
        
     }
+        
+        
         func evalSelection(choice: Int){
-            if (choice < startNumber || (choice > startNumber && choice < endNumber)){
+            // all included number tables will be solid
+            // when selected, change start or end to number.square and flip other one to .fill
+          
+            // if "start number" and : less than current start number,
+            // flip lowest to empty square
+            // set lowest to new number
+            // if end Number and : higher than current end number or lower than current but still greater than start number
+            // flip highest to empty
+            // set highest to new number
+            
+            if (startEndSelection == "Start Number" && (choice < startNumber || (choice > startNumber && choice < endNumber))){
                 startNumber = choice
                // isPlaying=true
-            } else if (choice > endNumber || (choice < endNumber && choice > startNumber)){
+                
+
+            } else if (startEndSelection == "End Number" && (choice > endNumber || (choice < endNumber && choice > startNumber))){
                 endNumber = choice
-              //  isPlaying=true
+               // isPlaying=true
             } else {
                // isPlaying = false
             }
             
-            // when selected,change image to number.square.fill
-            // if less than lowest,
-            // flip lowest to empty square
-            // set lowest to new number
-            // if higher than highest
-            // flip highest to empty
-            // set highest to new number
+          
         }
+    func setupGame(){
+        // num1 = pick a random first number between startNumber and endNumber
+        // num2 = pick a random second number between 1 and 12
+        num1 = Int.random(in: startNumber ... endNumber)
+        num2 = Int.random(in: 1 ... 12)
+        
+    }
+        
+        func doNothing(){
+           // do nothing
+            if (num1 * num2 == answer){
+                // add formula to string array
+                
+            }
+            isPlaying=true
+        }
+        
         
 //        VStack{
 //             Stepper("\(startNumber.formatted()) ", value: $startNumber, in: 1...12, step: 1)
