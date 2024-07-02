@@ -7,50 +7,40 @@
 
 import SwiftUI
 import Observation
+ 
 
 struct ContentView: View {
-    @State private var user = User()
-    @State private var showingSheet = false
-    
+    @State private var selectedNumber = 0
+    var colors = ["Red", "Green", "Blue", "Tartan"]
+        @State private var selectedColor = "Red"
     
     var body: some View {
         
         VStack{
-            Button("Show Sheet") {
-                showingSheet.toggle()
-            }
-            .sheet(isPresented: $showingSheet) {
-                SecondView(name: "Azrael")
-            }
-            
+            Text("Hello World")
+           
+                   Picker("Select a number", selection: $selectedNumber) {
+                       ForEach(0..<10) {
+                           Text("\($0)")
+                       }
+                   }
+                   .labelsHidden()
+           
         }
+         
+        
         VStack {
-            Text("Your name is \(user.firstName) \(user.lastName).")
-
-            TextField("First name", text: $user.firstName)
-            TextField("Last name", text: $user.lastName)
+                    Picker("Please choose a color", selection: $selectedColor) {
+                        ForEach(colors, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    Text("You selected: \(selectedColor)")
                 }
-        .padding()
+            
+        
+        
     }
-}
-
-@Observable
-class User {
-    var firstName = "Bilbo"
-    var lastName = "Baggins"
-}
-
-
-struct SecondView: View {
-    @Environment(\.dismiss) var dismiss
-    let name: String
-
-        var body: some View {
-            Text("Hello, \(name)!")
-            Button("Dismiss") {
-                dismiss()
-            }
-        }
 }
 
 #Preview {
