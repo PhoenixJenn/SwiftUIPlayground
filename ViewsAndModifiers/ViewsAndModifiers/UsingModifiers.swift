@@ -12,7 +12,7 @@ struct UsingModifiers: View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         
         
-        Text("Using a Modifier")
+        Text("Using a Modifier called modifier")
             .modifier(Title()) // using a modifier named modifier
         
         
@@ -34,6 +34,7 @@ struct UsingModifiers: View {
 }
 
 
+// Title Modifier
 struct Title: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -50,7 +51,7 @@ extension View {
         modifier(Title())
     }
 }
-
+// ---------------
 
 struct CapsuleText: View {
     var text: String
@@ -65,7 +66,7 @@ struct CapsuleText: View {
     }
 }
 
-
+// ----------------
 struct Watermark: ViewModifier {
     var text: String
 

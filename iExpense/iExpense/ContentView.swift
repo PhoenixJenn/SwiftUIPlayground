@@ -27,7 +27,13 @@ struct ContentView: View {
                    .labelsHidden()
            
         }
-         
+        VStack{
+            Picker(selection: $selectedNumber, label: EmptyView()) {
+                        ForEach(0..<10) {
+                            Text("\($0)")
+                        }
+                    }
+        }
         
         VStack {
                     Picker("Please choose a color", selection: $selectedColor) {
