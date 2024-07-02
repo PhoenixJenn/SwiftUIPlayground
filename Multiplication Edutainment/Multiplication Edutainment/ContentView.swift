@@ -9,10 +9,10 @@
 /*:
  REQUIREMENTS
  MVP
- [ ] The player needs to select which multiplication tables they want to practice. This could be pressing buttons, or it could be an “Up to…” stepper, going from 2 to 12.
+ [x] The player needs to select which multiplication tables they want to practice. This could be pressing buttons, or it could be an “Up to…” stepper, going from 2 to 12.
  [ ] The player should be able to select how many questions they want to be asked: 5, 10, or 20.
  [ ] You should randomly generate as many questions as they asked for, within the difficulty range they asked for.
- [ ] Start with some steppers, a text field and a couple of buttons
+ [x] Start with some steppers, a text field and a couple of buttons
  [ ] add some state to determine whether the game is active or whether you’re asking for settings
  [ ] Generate a range of questions based on the user’s settings
  [ ] Show the player how many questions they got correct at the end of the game, then offer to let them play again.
@@ -51,8 +51,9 @@ struct ContentView: View {
     @State private var num1 : Int = 1
     @State private var num2 : Int = 1
     @State private var score : Int = 0
+    @State private var count : Int = 0
     @State private var message : String = ""
-    
+    @State private var setup : Bool = true
     
     @FocusState private var answerIsFocused: Bool
     
@@ -80,6 +81,8 @@ struct ContentView: View {
         
         VStack{
             // Play Space
+            // TODO
+            // if setup == true then DO NOT SHOW this section.
             Text("Tables from \(startNumber)-\(endNumber)")
             Spacer()
             Spacer()
@@ -136,20 +139,15 @@ struct ContentView: View {
                         Button(action: {evalSelection(choice: number)} ) {
                             Image(systemName: (number < startNumber ||  number > endNumber) ? "\(number).circle" : "\(number).circle.fill")
                                 .foregroundStyle((startNumber == number || endNumber == number || number < startNumber || number > endNumber) ? .blue : .red)
-                            // .foregroundStyle(.black) // change color based on selection
-                                  // only add square.fill if selected
                         }.font(.system(size: 25))
                     }
                     
-                   
                 } // hstack
-                //\(startNumber): \(endNumber)= \(startEndSelection)
-                // answer: \(answer) :
                 .alert("\(message)", isPresented: $isPlaying) {
                     Button("OK", role: .cancel) { }
                 }
                 Spacer()
-                Text("Score: \(score)")
+                Text("Score: \(score) / \(count)")
                
                 
             } // vstack
@@ -157,29 +155,13 @@ struct ContentView: View {
 
         NavigationStack {
             Spacer()
-           // Text("Hello, World!").padding()
                 //.navigationTitle("SwiftUI")
                 .toolbar {
-                   
-                    ToolbarItem(placement: .bottomBar) {
-                        Button("Start Game", action: setupGame)
-                        
-                    }
-//                    ToolbarItemGroup(placement: .bottomBar) {
-//                        Button("First") {
-//                            print("Pressed")
-//                        }
-//
-//                        Button("Second") {
-//                            print("Pressed")
-//                        }
-//                    }
-                    
-                }
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
+                    ToolbarItemGroup(placement: .bottomBar) {
                         Button("Reset Range", action: doNothing)
+                        Button("Start Game", action: setupGame)
                     }
+                    
                 }
         }
       
@@ -187,6 +169,8 @@ struct ContentView: View {
     }
         
     func doNothing(){
+        // if reset range, then need to setup = true and  hide top
+        
         score = 0
         startNumber = 1
         endNumber = 12
@@ -218,11 +202,13 @@ struct ContentView: View {
           
         }
     func setupGame(){
+        // setup = false // no longer in setup mode.
         // num1 = pick a random first number between startNumber and endNumber
         // num2 = pick a random second number between 1 and 12
         num1 = Int.random(in: startNumber ... endNumber)
         num2 = Int.random(in: 1 ... 12)
         answer = 0
+       
         
     }
         
@@ -237,7 +223,7 @@ struct ContentView: View {
             } else {
                 message = "Incorrect. The answer is: \(num1) x \(num2) = " + String(num1 * num2)
             }
-            
+            count += 1
             isPlaying=true
             setupGame()
         }
