@@ -20,22 +20,45 @@ import Observation
 struct ContentView: View {
 
     @State private var expenses = Expenses()
+    @State private var showingAddExpense = false
+    
+    
     var body: some View {
         
         NavigationStack {
             List {
-                ForEach(expenses.items, id: \.name) { item in
-                    Text(item.name)
-                }.onDelete(perform: removeItems)
+                ForEach(expenses.items) { item in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(item.name)
+                                .font(.headline)
+                            Text(item.type)
+                        }
+
+                        Spacer()
+                        Text(item.amount, format: .currency(code: "USD"))
+                    }
+                }
+                .onDelete(perform: removeItems)
+                
+                // adding IDENTIFIABLE we can remove id
+//                ForEach(expenses.items, id: \.id) { item in
+//                    Text(item.name)
+//                }
+                
             }
             .navigationTitle("iExpense")
             .toolbar {
                 Button("Add Expense", systemImage: "plus") {
-                    let expense = ExpenseItem(name: "Test", type: "Personal", amount: 5)
-                    expenses.items.append(expense)
+                    showingAddExpense = true
+//                    let expense = ExpenseItem(name: "Test", type: "Personal", amount: 5)
+//                    expenses.items.append(expense)
                 }
             } // toolbar
         } //nav
+        .sheet(isPresented: $showingAddExpense) {
+            AddView(expenses: expenses)
+        }
         
         
     } // view
