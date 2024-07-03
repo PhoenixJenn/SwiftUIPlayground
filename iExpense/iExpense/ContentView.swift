@@ -18,46 +18,30 @@ import Observation
  
 
 struct ContentView: View {
-    @State private var selectedNumber = 0
-    var colors = ["Red", "Green", "Blue", "Tartan"]
-        @State private var selectedColor = "Red"
-    @AppStorage("tapCount") private var tapCount = 0
-    
+
+    @State private var expenses = Expenses()
     var body: some View {
         
-        VStack{
-            Text("Hello World")
-            Button("Tap count: \(tapCount)") {
-                        tapCount += 1
+        NavigationStack {
+            List {
+                ForEach(expenses.items, id: \.name) { item in
+                    Text(item.name)
+                }.onDelete(perform: removeItems)
             }
-            
-                   Picker("Select a number", selection: $selectedNumber) {
-                       ForEach(0..<10) {
-                           Text("\($0)")
-                       }
-                   }
-                   .labelsHidden()
-           
-        }
-        VStack{
-            Picker(selection: $selectedNumber, label: EmptyView()) {
-                        ForEach(0..<10) {
-                            Text("\($0)")
-                        }
-                    }
-        }
-        
-        VStack {
-                    Picker("Please choose a color", selection: $selectedColor) {
-                        ForEach(colors, id: \.self) {
-                            Text($0)
-                        }
-                    }
-                    Text("You selected: \(selectedColor)")
+            .navigationTitle("iExpense")
+            .toolbar {
+                Button("Add Expense", systemImage: "plus") {
+                    let expense = ExpenseItem(name: "Test", type: "Personal", amount: 5)
+                    expenses.items.append(expense)
                 }
-            
+            } // toolbar
+        } //nav
         
         
+    } // view
+    
+    func removeItems(at offsets: IndexSet) {
+        expenses.items.remove(atOffsets: offsets)
     }
 }
 
