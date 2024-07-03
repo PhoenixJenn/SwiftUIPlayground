@@ -13,6 +13,7 @@ struct AddView: View {
     @State private var type = "Personal"
     @State private var amount = 0.0
     @Environment(\.dismiss) var dismiss
+    //If you want to dismiss a view, you need to use the environment to read the correct dismiss action for however the view is being shown.
     
     var expenses: Expenses
     
@@ -31,8 +32,10 @@ struct AddView: View {
                             }
                         }
 
-                        TextField("Amount", value: $amount, format: .currency(code: "USD"))
+                        TextField("Amount", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                             .keyboardType(.decimalPad)
+                        
+                        
                     }
                     .navigationTitle("Add new expense")
                     .toolbar {
