@@ -32,11 +32,27 @@ struct MissionView: View {
                     VStack(alignment: .leading) {
                         
                         //----
+                        /*:
+                         
+                         Why after the VStack rather than inside? Because scroll views work best when they take full advantage of the available screen space, which means they should scroll edge to edge. If we put this inside our VStack it would have the same padding as the rest of our text, which means it would scroll strangely – the crew would get clipped as it hit the leading edge of our VStack, which looks odd.
+                         */
+                        Rectangle()
+                            .frame(height: 2)
+                            .foregroundStyle(.lightBackground)
+                            .padding(.vertical)
+                        
+                        Text("Crew")
+                            .font(.title.bold())
+                            .padding(.bottom, 5)
+                        
+                       
+                        
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(crew, id: \.role) { crewMember in
                                     NavigationLink {
                                         Text("Astronaut details")
+                                        AstronautView(astronaut: crewMember.astronaut)
                                     } label: {
                                         HStack {
                                             Image(crewMember.astronaut.id)
@@ -63,11 +79,22 @@ struct MissionView: View {
                         }
                         
                         // ----
+                        
+                        Rectangle()
+                            .frame(height: 2)
+                            .foregroundStyle(.lightBackground)
+                            .padding(.vertical)
+                        
                         Text("Mission Highlights")
                             .font(.title.bold())
                             .padding(.bottom, 5)
 
                         Text(mission.description)
+                        
+                        Rectangle()
+                            .frame(height: 2)
+                            .foregroundStyle(.lightBackground)
+                            .padding(.vertical)
                     }
                     .padding(.horizontal)
                 }
