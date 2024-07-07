@@ -26,7 +26,21 @@
  Here's a video but i cheated and made the missions larger in list view which meets criteria but fails on non-iphones :)
  https://www.youtube.com/watch?v=e7u9ZSCtLws
  
+ https://www.hackingwithswift.com/books/ios-swiftui/moonshot-wrap-up
  
+ Tip: For that last one, your best bet is to make all your grid code and all your list code two separate views, and switch between them using an if condition in ContentView. You can’t attach SwiftUI modifiers to an if condition, but you can wrap that condition in a Group then attach modifiers to there, like this:
+ 
+ Group {
+     if showingGrid {
+         GridLayout(astronauts: astronauts, missions: missions)
+     } else {
+         ListLayout(astronauts: astronauts, missions: missions)
+     }
+ }
+ .navigationTitle("My Group")
+ 
+ 
+ You might hit some speed bumps trying to style your list, because they have a particular look and feel on iOS by default. Try attaching .listStyle(.plain) to your list, then something like .listRowBackground(Color.darkBackground) to the contents of your list row – that should get you a long way towards your goal.
  */
 
 import SwiftUI
