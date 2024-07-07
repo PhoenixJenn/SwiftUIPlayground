@@ -9,7 +9,13 @@ import SwiftUI
 
 struct UsingNavigationDestinations: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List(0..<100) { i in
+                NavigationLink("Select \(i)", value: i)
+            }.navigationDestination(for: Int.self) { selection in
+                Text("You selected \(selection)")
+            }
+        }
     }
 }
 
