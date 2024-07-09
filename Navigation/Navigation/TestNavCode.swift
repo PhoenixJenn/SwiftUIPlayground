@@ -24,7 +24,6 @@ import SwiftUI
 struct TestNavCode: View {
     var body: some View {
         
-        
         NavigationStack {
             NavigationLink("Tap Me") {
                // Text("Detail View")

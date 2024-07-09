@@ -32,7 +32,7 @@ struct CustomizingNav: View {
                 //.navigationTitle("SwiftUI")
                 .navigationTitle($title)
                 .navigationBarTitleDisplayMode(.inline)
-            
+              
                 .toolbar {
                     
                     ToolbarItemGroup(placement: .topBarLeading) {
