@@ -50,6 +50,10 @@
  ^ added some code to make Mission conform to hashable and equatable
  NavigationLink(value) {
  
+ 
+ More Information to tackle this challenge
+ 
+ https://www.hackingwithswift.com/books/ios-swiftui/navigating-to-different-data-types-using-navigationpath
  NavigationStack {
      List(0..<100) { i in
          NavigationLink("Select \(i)", value: i)
