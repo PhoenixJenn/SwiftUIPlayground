@@ -17,7 +17,7 @@ import Foundation
  Previously we put this into a method on ContentView, but here I’d like to show you a better way: we’re going to write an extension on Bundle to do it all in one centralized place.
  
  */
-struct Astronaut: Codable, Identifiable {
+struct Astronaut: Codable, Identifiable, Hashable {
     let id: String
     let name: String
     let description: String

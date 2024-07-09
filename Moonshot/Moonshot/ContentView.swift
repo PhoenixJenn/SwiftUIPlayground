@@ -41,6 +41,42 @@
  
  
  You might hit some speed bumps trying to style your list, because they have a particular look and feel on iOS by default. Try attaching .listStyle(.plain) to your list, then something like .listRowBackground(Color.darkBackground) to the contents of your list row – that should get you a long way towards your goal.
+ 
+ https://www.hackingwithswift.com/books/ios-swiftui/navigation-wrap-up
+ Return to project 8 (Moonshot), and upgrade it to use NavigationLink(value:).
+ This means adding Hashable conformance,
+ and thinking carefully how to use navigationDestination().
+ 
+ ^ added some code to make Mission conform to hashable and equatable
+ NavigationLink(value) {
+ 
+ NavigationStack {
+     List(0..<100) { i in
+         NavigationLink("Select \(i)", value: i)
+     }.navigationDestination(for: Int.self) { selection in
+         Text("You selected \(selection)")
+     }
+ }
+ 
+ 
+ NavigationLink("Tap Me") {
+ //                        MissionView(number: i)
+ //                    }
+ 
+ struct DetailView: View {
+     var number: Int
+
+     var body: some View {
+         Text("Detail View \(number)")
+     }
+
+     init(number: Int) {
+         self.number = number
+         print("Creating detail view \(number)")
+     }
+ }
+ 
+ 
  */
 
 import SwiftUI
@@ -67,6 +103,7 @@ struct ContentView: View {
             ScrollView {
                 LazyVGrid(columns: columns) { //
                     ForEach(missions) { mission in
+                        // NavigationLink(value:).
                         NavigationLink {
                             MissionView(mission: mission, astronauts: astronauts)
                         } label: {
