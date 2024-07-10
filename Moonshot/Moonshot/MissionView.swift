@@ -12,7 +12,7 @@ import SwiftUI
 
 struct MissionView: View {
     
-        let mission: Mission // requires a mission
+    let mission: Mission // requires a mission
     
     struct CrewMember {
         let role: String
