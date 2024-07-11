@@ -9,13 +9,27 @@ import SwiftUI
 
 struct ActivityDescription: View {
     // let activityID : Int
+    var habit : Habit
     var body: some View {
-        Text("Activity")
-        Text("Description")
+        
+        HStack {
+                    VStack(alignment: .leading) {
+                        Text(habit.name)
+                            .font(.headline)
+                        Text(habit.description)
+                            .font(.caption)
+                    }
+                    
+                    Spacer()
+                    
+                    Text("\(habit.counter)")
+                        .font(.largeTitle)
+        }
+        .padding()
         
     }
 }
 
 #Preview {
-    ActivityDescription()
+    ActivityDescription(habit: Habit(name: "Workout", description: "Getting fitter every day"))
 }

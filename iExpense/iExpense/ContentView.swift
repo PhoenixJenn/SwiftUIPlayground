@@ -59,10 +59,10 @@ struct ContentView: View {
                     .fontWidth(.condensed)
                     .lineSpacing(50)
 
-                }
+                } // foreach
                 .onDelete(perform: removeItems)
                 
-            }
+            }//list
             .navigationTitle("iExpense")
             .toolbar {
                 Button("Add Expense", systemImage: "plus") {

@@ -42,27 +42,36 @@ struct ContentView: View {
     var body: some View {
         
         
-        NavigationStack {
+        
+                // change this to view details somehow
+                // put Navigation link IN the Foreach rather than at parent level
+            NavigationStack {
             
             NavigationLink("Add Item") {
                 AddHabit(habits: habits)
             }
             List{
+                
                     ForEach(habits.items) { item in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
-                                Text(item.description)
+                        NavigationLink {
+                            ActivityDescription(habit: item)
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(item.name)
+                                        .font(.headline)
+                                    Text(item.description)
+                                }
+                                Spacer()
+                                Text("\(item.counter)") // ?? 0
+                                    .font(.largeTitle)
                             }
-                            Spacer()
-                            Text("\(item.counter ?? 0)")
                            // Text("\(item)")
 //                            Stepper(label:" ", onIncrement: doNothing(), onDecrement: doNothing())
                             
-                            Button("",systemImage: "plus" ) {
-                                doNothing(id: item.id, counter: item.counter ?? 0)
-                                    }
+//                            Button("",systemImage: "plus" ) {
+//                                doNothing(id: item.id, counter: item.counter ?? 0)
+//                                    }
 //                            Stepper("^[\(item.counter) cup](inflect: true)", value: item.counter, in: 1...20)
                             //Stepper(value: item.counter)
                             /*:
