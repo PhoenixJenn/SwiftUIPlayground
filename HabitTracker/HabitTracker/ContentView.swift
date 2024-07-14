@@ -30,7 +30,8 @@
  [ ] When the increment button is tapped, copy the existing activity and add 1 to its completion count.
  [ ] Use firstIndex(of:) to find where the previous activity was in the class’s array, then change it to be your new activity – something like data.activities[index] = newActivity will work. (This requires the Equatable conformance from step 1!)
  
- // TODO: Read and Understand Binding and Observable https://gist.github.com/Ma-He/6b9ebff24061884fde8e2132692a9aa3
+ // TODO: Read and Understand Binding and Observable
+ https://www.hackingwithswift.com/forums/100-days-of-swiftui/d47-habit-tracker/1190 https://gist.github.com/Ma-He/6b9ebff24061884fde8e2132692a9aa3
  // https://github.com/Deepesh22/Habit-Tracker/blob/master/HabitTracker/Habit.swift
  https://github.com/Deepesh22/Habit-Tracker/blob/master/HabitTracker/ContentView.swift
  //https://www.hackingwithswift.com/quick-start/swiftui/what-is-the-stateobject-property-wrapper
@@ -47,19 +48,13 @@ struct ContentView: View {
     @State private var showingAddHabit = false
     @State private var tally = 0
     
-    //var activity: Habit
-    
     var body: some View {
          
-           
-            
-            
-                // change this to view details somehow
-                // put Navigation link IN the Foreach rather than at parent level
+
             NavigationView {
                 
                 List {
-                    //ForEach(Array(array.enumerated()), id: \.offset) { index, element in
+                    
                     ForEach(Array(habits.habitArray.enumerated()), id: \.offset) { index, activity in
                         NavigationLink(destination: ActivityDescription(habit: $habits.habitArray[index])){
                             HStack{
@@ -68,7 +63,6 @@ struct ContentView: View {
 //                                    .foregroundColor(.white)
 //                                    .clipShape(Circle())
                                 Text("\(habits.habitArray[index].name)")
-                               // Text("\(habits.habitArray[index].description)")
                                 Text("\(habits.habitArray[index].counter)")
                             }
                             

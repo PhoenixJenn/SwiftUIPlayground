@@ -14,8 +14,6 @@ struct AddHabit: View {
     
     @Environment(\.dismiss) var dismiss
     
-    //var habit: Habit // habit variable must contain a struct
-    
     @ObservedObject var habits : Habits
     
     var body: some View {
@@ -25,12 +23,12 @@ struct AddHabit: View {
             Form {
                 TextField("Name", text: $name)
                 TextField("Description", text: $description)
-                //TextField("Count", text: $counter)
             }
             .navigationTitle("Add new Habit")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("Save") {
+                        
                         let habit = Habit(name: name, description: description, counter: 0)
                        
                         habits.habitArray.append(habit)
