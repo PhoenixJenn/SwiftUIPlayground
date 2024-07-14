@@ -61,10 +61,6 @@
 		821D49642C37489C003D43A6 = {
 			isa = PBXGroup;
 			children = (
-				821D499E2C3A10AD003D43A6 /* AstronautView.swift */,
-				821D499C2C3A0DDA003D43A6 /* MissionView.swift */,
-				821D499A2C3A00F5003D43A6 /* Color-Theme.swift */,
-				821D49982C39FA56003D43A6 /* Mission.swift */,
 				821D496F2C37489C003D43A6 /* Moonshot */,
 				821D496E2C37489C003D43A6 /* Products */,
 			);
@@ -84,6 +80,10 @@
 				821D49962C387D3A003D43A6 /* missions.json */,
 				821D49942C387C9E003D43A6 /* astronauts.json */,
 				821D49702C37489C003D43A6 /* MoonshotApp.swift */,
+				821D499C2C3A0DDA003D43A6 /* MissionView.swift */,
+				821D499E2C3A10AD003D43A6 /* AstronautView.swift */,
+				821D49982C39FA56003D43A6 /* Mission.swift */,
+				821D499A2C3A00F5003D43A6 /* Color-Theme.swift */,
 				821D49722C37489C003D43A6 /* ContentView.swift */,
 				821D498A2C387252003D43A6 /* Astronaut.swift */,
 				821D498C2C387360003D43A6 /* Bundle-Decodable.swift */,
