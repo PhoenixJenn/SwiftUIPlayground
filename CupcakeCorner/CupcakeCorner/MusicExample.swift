@@ -11,6 +11,36 @@ struct MusicExample: View {
     @State private var results = [Result]()
         
     var body: some View {
+        AsyncImage(url: URL(string: "https://hws.dev/img/bad.png")) { phase in
+            if let image = phase.image {
+                image
+                    .resizable()
+                    .scaledToFit()
+            } else if phase.error != nil {
+                Text("There was an error loading the image.")
+            } else {
+                ProgressView()
+            }
+        }
+        .frame(width: 200, height: 200)
+        
+        // OPTION 1
+//        AsyncImage(url: URL(string: "https://hws.dev/img/logo.png")) { image in
+//            image
+//                .resizable()
+//                .scaledToFit()
+//        } placeholder: {
+//           // Color.red
+//            ProgressView()
+//        }
+//        .frame(width: 200, height: 200)
+        // Option 2
+     //   AsyncImage(url: URL(string: "https://hws.dev/img/logo.png"), scale: 3)
+        
+        //Option 3
+//        AsyncImage(url: URL(string: "https://hws.dev/img/logo.png"))
+//            .frame(width: 200, height: 200)
+        
         List(results, id: \.trackId) { item in
             VStack(alignment: .leading) {
                 Text(item.trackName)
