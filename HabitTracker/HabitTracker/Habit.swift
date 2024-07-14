@@ -18,8 +18,8 @@
 
 
 import Foundation
-
-struct Habit : Identifiable, Codable {
+//equatable
+struct Habit : Identifiable, Codable  {
     var id = UUID()
     let name: String
     let description: String

@@ -32,9 +32,9 @@ struct AddHabit: View {
                 ToolbarItem(placement: .primaryAction) {
                     Button("Save") {
                         let habit = Habit(name: name, description: description, counter: 0)
-                        //self.habits.habits.append(habit)
+                       
                         habits.habitArray.append(habit)
-                        //habits.habits.append(habit)
+                        
                         dismiss()
                     }
                     
