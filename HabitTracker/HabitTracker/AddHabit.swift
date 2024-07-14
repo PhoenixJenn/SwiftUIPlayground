@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct AddHabit: View {
+    
     @State private var name = ""
     @State private var description = ""
-    //@State private var counter = 0
-    
     
     @Environment(\.dismiss) var dismiss
     
-    var habits: Habits
+    //var habit: Habit // habit variable must contain a struct
+    
+    @ObservedObject var habits : Habits
     
     var body: some View {
         
-        NavigationStack {
+        NavigationView {
             
             Form {
                 TextField("Name", text: $name)
@@ -30,8 +31,10 @@ struct AddHabit: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("Save") {
-                        let item = Habit(name: name, description: description, counter: 7)
-                        habits.items.append(item)
+                        let habit = Habit(name: name, description: description, counter: 0)
+                        //self.habits.habits.append(habit)
+                        habits.habitArray.append(habit)
+                        //habits.habits.append(habit)
                         dismiss()
                     }
                     
@@ -47,5 +50,5 @@ struct AddHabit: View {
 }
 
 #Preview {
-    AddHabit( habits:Habits() )
+    AddHabit( habits: Habits() )
 }

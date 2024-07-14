@@ -8,28 +8,51 @@
 import SwiftUI
 
 struct ActivityDescription: View {
-    // let activityID : Int
-    var habit : Habit
+    
+    @Binding var habit: Habit
+    //let habit : Habit
+    
     var body: some View {
-        
-        HStack {
+         
                     VStack(alignment: .leading) {
+                        Spacer()
                         Text(habit.name)
-                            .font(.headline)
+                            .font(.largeTitle)
                         Text(habit.description)
-                            .font(.caption)
-                    }
+                            .font(.title)
+                        
+                        Spacer()
+                        Divider()
+                                //.frame(width: 80)
+                                .padding(.vertical)
+                        
+                        VStack(alignment: .center) {
+                            Text("\(habit.counter)")
+                                .font(.largeTitle)
+                                 
+                        }
+                        
+                        Button(action: {
+                                habit.incrementCounter()
+                        }) {
+                                HStack {
+                                    Image(systemName: "plus")
+                                        .font(.system(size: 24, weight: .medium))
+                                    Text("Track Habit".uppercased())
+                                        .font(.title)
+                                }
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.blue)
+                                .cornerRadius(12)
+                            }
+                           
+                    }.padding()
+        //divider
                     
-                    Spacer()
-                    
-                    Text("\(habit.counter)")
-                        .font(.largeTitle)
-        }
-        .padding()
-        
-    }
-}
+    } //body view
+} // struct
 
 #Preview {
-    ActivityDescription(habit: Habit(name: "Workout", description: "Getting fitter every day"))
+    ActivityDescription(habit: .constant(Habit(name: "Water", description: "Hydration matters")))
 }
