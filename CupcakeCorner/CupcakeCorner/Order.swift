@@ -7,8 +7,11 @@
 
 import Foundation
 
+
+
 @Observable
 class Order : Codable {
+    //reminder: the static keyword is used to create properties and methods that belong to a type, rather than to instances of a type.
     static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
 
     var type = 0
@@ -30,8 +33,15 @@ class Order : Codable {
     var city = ""
     var zip = ""
     
+    func checkForEmpty(value : String)-> Bool {
+        var isEmpty : Bool
+        isEmpty = value.isEmpty || value.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 ? true : false
+        return isEmpty
+    }
+    
     var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+        if checkForEmpty(value: name) || checkForEmpty(value: streetAddress) || checkForEmpty(value: city) || checkForEmpty(value: zip) {
+       // if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
             return false
         }
 
