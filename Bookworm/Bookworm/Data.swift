@@ -5,18 +5,24 @@
 //  Created by Jennifer Lee on 7/16/24.
 //
 
-
-import SwiftUI
+import Foundation
+import SwiftData
+ 
  
 
-struct Data: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        
+@Model
+class Book {
+    var title: String
+    var author: String
+    var genre: String
+    var review: String
+    var rating: Int
+    
+    init(title: String, author: String, genre: String, review: String, rating: Int) {
+        self.title = title
+        self.author = author
+        self.genre = genre
+        self.review = review
+        self.rating = rating
     }
 }
-
-#Preview {
-    Data()
-}
- 

@@ -6,22 +6,34 @@
 //
 
 import SwiftUI
-
+import SwiftData
 
 
 /*:
- TO DO:
- 
- This was the last part of the overview for this project,
- so please go ahead and reset your project ready for the real work to begin.
- 
- That means resetting ContentView.swift, BookwormApp.swift, and also deleting Student.swift.
+
  
  */
 struct ContentView: View {
+    @Environment(\.modelContext) var modelContext
+    @Query var books: [Book]
+
+    @State private var showingAddScreen = false
     
     var body: some View {
-        Text("Hello World")
+        NavigationStack {
+            Text("Count: \(books.count)")
+                .navigationTitle("Bookworm")
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Add Book", systemImage: "plus") {
+                            showingAddScreen.toggle()
+                        }
+                    }
+                }
+                .sheet(isPresented: $showingAddScreen) {
+                    AddBookView()
+                }
+        }
     }
 }
 
