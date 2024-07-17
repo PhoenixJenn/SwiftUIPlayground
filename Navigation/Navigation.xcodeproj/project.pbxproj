@@ -18,6 +18,7 @@
 		821D49C32C3B482E003D43A6 /* PathStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D49C22C3B482D003D43A6 /* PathStore.swift */; };
 		821D49C52C3B491A003D43A6 /* ContentViewSavingPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D49C42C3B491A003D43A6 /* ContentViewSavingPath.swift */; };
 		821D49C72C3C34E9003D43A6 /* CustomizingNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D49C62C3C34E9003D43A6 /* CustomizingNav.swift */; };
+		821D4A1D2C472D1B003D43A6 /* ComplexNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D4A1C2C472D1B003D43A6 /* ComplexNavigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		821D49C22C3B482D003D43A6 /* PathStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathStore.swift; sourceTree = "<group>"; };
 		821D49C42C3B491A003D43A6 /* ContentViewSavingPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewSavingPath.swift; sourceTree = "<group>"; };
 		821D49C62C3C34E9003D43A6 /* CustomizingNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizingNav.swift; sourceTree = "<group>"; };
+		821D4A1C2C472D1B003D43A6 /* ComplexNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexNavigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			children = (
 				821D49AC2C3B3F8F003D43A6 /* NavigationApp.swift */,
 				821D49AE2C3B3F8F003D43A6 /* ContentView.swift */,
+				821D4A1C2C472D1B003D43A6 /* ComplexNavigation.swift */,
 				821D49C62C3C34E9003D43A6 /* CustomizingNav.swift */,
 				821D49BE2C3B43B1003D43A6 /* MultiNavDestTypes.swift */,
 				821D49C02C3B449F003D43A6 /* Sandbox.swift */,
@@ -166,6 +169,7 @@
 				821D49BD2C3B423E003D43A6 /* UsingNavigationDestinations.swift in Sources */,
 				821D49AF2C3B3F8F003D43A6 /* ContentView.swift in Sources */,
 				821D49C72C3C34E9003D43A6 /* CustomizingNav.swift in Sources */,
+				821D4A1D2C472D1B003D43A6 /* ComplexNavigation.swift in Sources */,
 				821D49AD2C3B3F8F003D43A6 /* NavigationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

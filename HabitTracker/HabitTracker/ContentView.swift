@@ -43,7 +43,7 @@ import Foundation
 
 struct ContentView: View {
    
-    @ObservedObject var habits = Habits()
+    @ObservedObject var habits = HabitStorage()
     
     @State private var showingAddHabit = false
     @State private var tally = 0

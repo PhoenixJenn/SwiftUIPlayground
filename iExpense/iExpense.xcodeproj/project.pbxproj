@@ -26,6 +26,7 @@
 		821D49612C35FD9B003D43A6 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D49602C35FD9A003D43A6 /* AddView.swift */; };
 		821D49632C36083E003D43A6 /* FontsAndFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D49622C36083E003D43A6 /* FontsAndFormatting.swift */; };
 		821D49C92C3D94C0003D43A6 /* UsingSheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D49C82C3D94C0003D43A6 /* UsingSheets.swift */; };
+		821D4A112C459269003D43A6 /* MoreFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D4A102C459269003D43A6 /* MoreFormatting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		821D49602C35FD9A003D43A6 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		821D49622C36083E003D43A6 /* FontsAndFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsAndFormatting.swift; sourceTree = "<group>"; };
 		821D49C82C3D94C0003D43A6 /* UsingSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsingSheets.swift; sourceTree = "<group>"; };
+		821D4A102C459269003D43A6 /* MoreFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreFormatting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				821D493A2C33A004003D43A6 /* ContentView.swift */,
 				821D49C82C3D94C0003D43A6 /* UsingSheets.swift */,
 				821D49622C36083E003D43A6 /* FontsAndFormatting.swift */,
+				821D4A102C459269003D43A6 /* MoreFormatting.swift */,
 				821D494C2C35FA4F003D43A6 /* ExpenseItem.swift */,
 				821D49602C35FD9A003D43A6 /* AddView.swift */,
 				821D494A2C35F9D6003D43A6 /* ListWithDeletion.swift */,
@@ -213,6 +216,7 @@
 				821D49C92C3D94C0003D43A6 /* UsingSheets.swift in Sources */,
 				821D495D2C35FBB5003D43A6 /* ListWithDeletion.swift in Sources */,
 				821D49632C36083E003D43A6 /* FontsAndFormatting.swift in Sources */,
+				821D4A112C459269003D43A6 /* MoreFormatting.swift in Sources */,
 				821D49492C344572003D43A6 /* Playground.swift in Sources */,
 				821D49472C34435E003D43A6 /* UserDefaults.swift in Sources */,
 			);

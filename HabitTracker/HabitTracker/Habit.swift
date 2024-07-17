@@ -31,7 +31,7 @@ struct Habit : Identifiable, Codable  {
 }
 
 
-class Habits  : ObservableObject {
+class HabitStorage  : ObservableObject {
     
     @Published var habitArray = [Habit](){
         

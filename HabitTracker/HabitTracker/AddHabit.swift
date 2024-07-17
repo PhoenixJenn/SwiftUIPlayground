@@ -14,7 +14,7 @@ struct AddHabit: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @ObservedObject var habits : Habits
+    @ObservedObject var habits : HabitStorage
     
     var body: some View {
         
@@ -48,5 +48,5 @@ struct AddHabit: View {
 }
 
 #Preview {
-    AddHabit( habits: Habits() )
+    AddHabit( habits: HabitStorage() )
 }
