@@ -5,6 +5,10 @@
 //  Created by Jennifer Lee on 7/16/24.
 //
 
+/*:
+ https://www.hackingwithswift.com/books/ios-swiftui/creating-a-custom-component-with-binding
+ This is the power of @Binding: as far as the button is concerned it’s just toggling a Boolean – it has no idea that something else is monitoring that Boolean and acting upon changes.
+ */
 import SwiftUI
 
 struct BindingsAndBindables: View {
