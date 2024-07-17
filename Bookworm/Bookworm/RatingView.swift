@@ -39,7 +39,7 @@ struct RatingView: View {
                         .foregroundStyle(number > rating ? offColor : onColor)
                 }
             }
-        }
+        }.buttonStyle(.plain)
     }
     
     func image(for number: Int) -> Image {
