@@ -5,6 +5,11 @@
 //  Created by Jennifer Lee on 7/16/24.
 //
 
+/*:
+ https://www.hackingwithswift.com/books/ios-swiftui/accepting-multi-line-text-input-with-texteditor
+ Tip: SwiftUI often changes the way things look once they are inside a Form, so make sure and try them both inside and outside a Form to see how they vary.
+ */
+
 import SwiftUI
 
 struct LongerText: View {
