@@ -13,51 +13,67 @@ struct CheckoutView: View {
     @State private var alertTitle = ""
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
-    
+    @Environment(\.dismiss) var dismiss
     @ObservedObject var addressBook : AddressBook
     
     var body: some View {
-        
-        ScrollView {
-            VStack {
-                AsyncImage(url: URL(string: "https://hws.dev/img/cupcakes@3x.jpg"), scale: 3) { image in
+        NavigationView{
+            ScrollView {
+                VStack {
+                    AsyncImage(url: URL(string: "https://hws.dev/img/cupcakes@3x.jpg"), scale: 3) { image in
                         image
                             .resizable()
                             .scaledToFit()
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(height: 233)
-
-                Text("Your total is \(order.cost, format: .currency(code: "USD"))")
-                    .font(.title)
-
-                Button("Place Order") {
-                    Task {
-                        await placeOrder()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(height: 233)
+                    
+                    Text("Your total is \(order.cost, format: .currency(code: "USD"))")
+                        .font(.title)
+                    
+                    Button("Place Order") {
+                        Task {
+                            await placeOrder()
+                        }
                     }
                 }
             }
+            .navigationTitle("Check out")
+//            .toolbar {
+//                ToolbarItem(placement: .navigation) {
+//                    Button("Home") {
+//                        dismiss()
+//                    }
+//                }
+//            }
+            .navigationBarTitleDisplayMode(.inline)
+            
+            .scrollBounceBehavior(.basedOnSize)
+            .alert("\(alertTitle)", isPresented: $showingConfirmation) {
+                Button("OK") { }
+            } message: {
+                Text(confirmationMessage)
+            }
+            
         }
-        .navigationTitle("Check out")
-        .navigationBarTitleDisplayMode(.inline)
-        .scrollBounceBehavior(.basedOnSize)
-        .alert("\(alertTitle)", isPresented: $showingConfirmation) {
-            Button("OK") { }
-        } message: {
-            Text(confirmationMessage)
-        }
-        
     }
     
     
-    
+    func saveAddress(){
+        let address = Address(name: order.name, streetAddress: order.streetAddress, city: order.city, zip: order.zip)
+        addressBook.addressArray.append(address)
+    }
     
     func placeOrder() async {
+        if order.saveAddressEnabled {
+                saveAddress()
+        }
         guard let encoded = try? JSONEncoder().encode(order) else {
             print("Failed to encode order")
             return
         }
+        
         
         let url = URL(string: "https://reqres.in/api/cupcakes")!
         var request = URLRequest(url: url)
@@ -83,5 +99,5 @@ struct CheckoutView: View {
 }
 
 #Preview {
-    CheckoutView(order: Order())
+    CheckoutView(order: Order(), addressBook: AddressBook())
 }

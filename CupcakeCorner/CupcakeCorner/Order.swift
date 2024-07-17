@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 @Observable
 class Order : Codable {
     //reminder: the static keyword is used to create properties and methods that belong to a type, rather than to instances of a type.
@@ -28,6 +26,11 @@ class Order : Codable {
         }
     }
     
+    var saveAddressEnabled = false {
+        didSet {
+
+        }
+    }
     var name = ""
     var streetAddress = ""
     var city = ""
@@ -41,7 +44,7 @@ class Order : Codable {
     
     var hasValidAddress: Bool {
         if checkForEmpty(value: name) || checkForEmpty(value: streetAddress) || checkForEmpty(value: city) || checkForEmpty(value: zip) {
-       // if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+                // if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
             return false
         }
 
