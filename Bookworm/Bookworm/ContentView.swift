@@ -10,13 +10,24 @@ import SwiftData
 
 
 /*:
-
+CHALLENGE:
+ Right now it’s possible to select no title, author, or genre for books, which causes a problem for the detail view. Please fix this, either by forcing defaults, validating the form, or showing a default picture for unknown genres – you can choose.
+ Modify ContentView so that books rated as 1 star are highlighted somehow, such as having their name shown in red.
+ Add a new “date” attribute to the Book class, assigning Date.now to it so it gets the current date and time, then format that nicely somewhere in DetailView.
  
  */
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    @Query var books: [Book]
-
+    //@Query var books: [Book]
+    // @Query(sort: \Book.title) var books: [Book]
+    // @Query(sort: [SortDescriptor(\Book.title)]) var books: [Book]
+    // @Query(sort: [SortDescriptor(\Book.title, order: .reverse)]) var books: [Book]
+    //@Query(sort: \Book.rating, order: .reverse) var books: [Book]
+    @Query(sort: [
+        SortDescriptor(\Book.title),
+        SortDescriptor(\Book.author)
+    ]) var books: [Book]
+    
     @State private var showingAddScreen = false
     
     var body: some View {
@@ -29,12 +40,49 @@ struct ContentView: View {
                             showingAddScreen.toggle()
                         }
                     }
+                    ToolbarItem(placement: .topBarLeading) {
+                        EditButton()
+                    }
                 }
                 .sheet(isPresented: $showingAddScreen) {
                     AddBookView()
                 }
+            
+            
+            List {
+                ForEach(books) { book in
+                    NavigationLink(value: book) {
+                        HStack {
+                            EmojiRatingView(rating: book.rating)
+                                .font(.largeTitle)
+
+                            VStack(alignment: .leading) {
+                                Text(book.title)
+                                    .font(.headline)
+                                Text(book.author)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                }
+                .onDelete(perform: deleteBooks)
+            }.navigationDestination(for: Book.self) { book in
+                DetailView(book: book)
+            }
         }
     }
+    
+    func deleteBooks(at offsets: IndexSet) {
+        for offset in offsets {
+            // find this book in our query
+            let book = books[offset]
+
+            // delete it from the context
+            modelContext.delete(book)
+        }
+    }
+    
+    
 }
 
 #Preview {
