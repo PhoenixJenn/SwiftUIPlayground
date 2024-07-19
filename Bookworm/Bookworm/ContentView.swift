@@ -11,9 +11,11 @@ import SwiftData
 
 /*:
 CHALLENGE:
- Right now it’s possible to select no title, author, or genre for books, which causes a problem for the detail view. Please fix this, either by forcing defaults, validating the form, or showing a default picture for unknown genres – you can choose.
- Modify ContentView so that books rated as 1 star are highlighted somehow, such as having their name shown in red.
- Add a new “date” attribute to the Book class, assigning Date.now to it so it gets the current date and time, then format that nicely somewhere in DetailView.
+[x] Right now it’s possible to select no title, author, or genre for books, which causes a problem for the detail view. Please fix this, either by forcing defaults, validating the form, or showing a default picture for unknown genres – you can choose.
+[x] Modify ContentView so that books rated as 1 star are highlighted somehow, such as having their name shown in red.
+[x] Add a new “date” attribute to the Book class, assigning Date.now to it so it gets the current date and time, then format that nicely somewhere in DetailView.
+ https://www.hackingwithswift.com/quick-start/swiftui/how-to-format-dates-inside-text-views 
+ Check BetterRest for date
  
  */
 struct ContentView: View {
@@ -59,6 +61,7 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text(book.title)
                                     .font(.headline)
+                                    .foregroundColor(book.rating==1 ? .red : .black)
                                 Text(book.author)
                                     .foregroundStyle(.secondary)
                             }
