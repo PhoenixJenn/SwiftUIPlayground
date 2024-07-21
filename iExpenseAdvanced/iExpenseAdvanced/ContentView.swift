@@ -1,10 +1,9 @@
 //
 //  ContentView.swift
-//  iExpense
+//  iExpenseAdvanced
 //
-//  Created by Jennifer Lee on 7/1/24.
-// https://www.hackingwithswift.com/books/ios-swiftui/iexpense-introduction
-
+//  Created by Jennifer Lee on 7/21/24.
+//
 
 /*:
  @AppStorage is easier than UserDefaults: it’s one line of code rather than two, and it also means we don’t have to repeat the key name each time. However, right now at least @AppStorage doesn’t make it easy to handle storing complex objects such as Swift structs
@@ -15,8 +14,7 @@
  */
 
 /*: CHALLENGE
- [x] Use the user’s preferred currency, rather than always using US dollars.
- [x] Modify the expense amounts in ContentView to contain some styling depending on their value – expenses under $10 should have one style, expenses under $100 another, and expenses over $100 a third style. What those styles are depend on you.
+
  [ ] For a bigger challenge, try splitting the expenses list into two sections: one for personal expenses, and one for business expenses. This is tricky for a few reasons, not least because it means being careful about how items are deleted!
  
  CHALLENGE: https://www.hackingwithswift.com/books/ios-swiftui/navigation-wrap-up
@@ -31,22 +29,26 @@
  
  */
 import SwiftUI
-import Observation
- 
+import SwiftData
+//import Observation
 
 struct ContentView: View {
-
-    @State private var expenses = Expenses()
+    
+    @Environment(\.modelContext) var modelContext
+    //@State private var expenses = Expense()
     @State private var showingAddExpense = false
+    @Query var expenses : [Expense]
     
     var body: some View {
         
         NavigationStack {
             NavigationLink("Add Item") {
-                AddView(expenses: expenses)
+                //
+                AddExpenseView()
+                //AddExpenseView(expense: Expense(name: "", type: "Personal", amount: 0.00))
             }
             List {
-                ForEach(expenses.items) { item in
+                ForEach(expenses) { item in
                     HStack {
                         VStack(alignment: .leading) {
                             Text(item.name)
@@ -75,16 +77,23 @@ struct ContentView: View {
             } // toolbar
         } //nav
         .sheet(isPresented: $showingAddExpense) {
-            AddView(expenses: expenses)
+            AddExpenseView()
+            //AddExpenseView(expense: Expense(name: "", type: "Personal", amount: 0.00))
         }
         
         
     } // view
     
     func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
+        for offset in offsets{
+            let expense = expenses[offset]
+            modelContext.delete(expense)
+        }
+        //expenses.items.remove(atOffsets: offsets)
     }
 }
+
+
 
 #Preview {
     ContentView()
