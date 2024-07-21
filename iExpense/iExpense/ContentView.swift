@@ -25,6 +25,10 @@
  (Tip: The dismiss() code works great here, but you might want to add the navigationBarBackButtonHidden() modifier so they have to explicitly choose Cancel.)
  [] Try changing project 7 so that it lets users edit their issue name in the navigation title rather than a separate textfield. Which option do you prefer?
  
+ [] Start by upgrading it to use SwiftData.
+ [] Add a customizable sort order option: by name or by amount.
+ [] Add a filter option to show all expenses, just personal expenses, or just business expenses.
+ 
  */
 import SwiftUI
 import Observation
