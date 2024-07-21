@@ -9,6 +9,12 @@
  Ratings and reviews per restaurant
  1 star (count) 2 star (count) 3 star (count) 4 star (count) 5 star (count)
  
+ Locations
+ LocationID : UUID
+ Park : String
+ Location : String
+ 
+ 
  [ ]Countries in Epcot
  [] France
  34 – ATTRACTION - Palais du Cinema
@@ -156,16 +162,38 @@
  27 – Coral Reef Restaurant (Table Service)
  */
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    
+    @Query var locations: [Location]
+    
+    @Environment(\.modelContext) var modelContext
+    
     var body: some View {
+        
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            NavigationStack {
+                Text("Locations")
+                List(locations) { location in
+                    Text(location.location)
+                    Text(location.park)
+                    
+                }
+                .navigationTitle("Classroom")
+                .toolbar {
+                    Button("Welcome") {
+                        loadData()
+                    }
+                }
+            }
         }
         .padding()
+    }
+    
+    func loadData(){
+//        let student = Student(id: UUID(), name: "\(chosenFirstName) \(chosenLastName)")
+//        modelContext.insert(student)
     }
 }
 
