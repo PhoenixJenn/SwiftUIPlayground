@@ -33,11 +33,10 @@ struct DetailView: View {
                         }
                         
                         Section {
-                            //Text(person.friends)
-//                            ForEach(person.friends) { friend in
-//                               // Text(friend.name)
-//                                
-//                            }
+                            ForEach(person.tags.indices, id: \.self) {
+                                Text(person.tags[$0])
+                            }
+                            
                         } header: {
                             Text("Friends")
                         }

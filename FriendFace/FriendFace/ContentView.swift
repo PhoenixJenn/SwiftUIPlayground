@@ -94,6 +94,13 @@ struct ContentView: View {
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             let decodedData = try decoder.decode([Person].self, from: data)
+            
+            for p in decodedData{
+                print(p.name)
+                print(p.tags[0])
+                
+            }
+            
             return decodedData
         } catch {
             //print(error)

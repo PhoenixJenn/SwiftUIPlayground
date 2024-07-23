@@ -23,6 +23,7 @@ class Person : Identifiable, Decodable {
     var registered : Date
     var tags : [String]
     var friends : [Friend]
+    
     //@Relationship(deleteRule: .cascade) var friends = [Friend]()
     
     
@@ -52,43 +53,51 @@ class Person : Identifiable, Decodable {
         case registered
         case tags
         case friends
-//        case _id = "id"
-//        case _isActive = "isActive"
-//        case _name = "name"
-//        case _age = "age"
-//        case _company = "company"
-//        case _email = "email"
-//        case _address = "address"
-//        case _about = "about"
-//        case _registered = "registered"
-//        case _tags = "tags"
-//        case _friends = "friends"
+        //        case _id = "id"
+        //        case _isActive = "isActive"
+        //        case _name = "name"
+        //        case _age = "age"
+        //        case _company = "company"
+        //        case _email = "email"
+        //        case _address = "address"
+        //        case _about = "about"
+        //        case _registered = "registered"
+        //        case _tags = "tags"
+        //        case _friends = "friends"
     }
     
     // https://www.hackingwithswift.com/books/ios-swiftui/adding-codable-conformance-for-published-properties
     //https://www.hackingwithswift.com/forums/swiftui/can-someone-explain-my-mistake-here/24252
     
     // Decode the date
-           // SEE: https://developer.apple.com/documentation/foundation/dateformatter#overview
-           // SEE: https://developer.apple.com/documentation/foundation/iso8601dateformatter
-           // SEE: https://makclass.com/posts/24-a-quick-example-on-iso8601dateformatter-and-sorted-by-function
+    // SEE: https://developer.apple.com/documentation/foundation/dateformatter#overview
+    // SEE: https://developer.apple.com/documentation/foundation/iso8601dateformatter
+    // SEE: https://makclass.com/posts/24-a-quick-example-on-iso8601dateformatter-and-sorted-by-function
     
     required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
         
-        id = try values.decode(UUID.self, forKey: .id)
-        isActive = try values.decode(Bool.self, forKey: .isActive)
-        name = try values.decode(String.self, forKey: .name)
-        age = try values.decode(Int.self, forKey: .age)
-        company = try values.decode(String.self, forKey: .company)
-        email = try values.decode(String.self, forKey: .email)
-        address = try values.decode(String.self, forKey: .address)
-        about = try values.decode(String.self, forKey: .about)
-        registered = try values.decode(Date.self, forKey: .registered)
+        // let classroom = try! JSONDecoder().decode(Classroom.self, from: Data(json.utf8))
+        let person = try decoder.container(keyedBy: CodingKeys.self)
+        
+        id = try person.decode(UUID.self, forKey: .id)
+        isActive = try person.decode(Bool.self, forKey: .isActive)
+        name = try person.decode(String.self, forKey: .name)
+        age = try person.decode(Int.self, forKey: .age)
+        company = try person.decode(String.self, forKey: .company)
+        email = try person.decode(String.self, forKey: .email)
+        address = try person.decode(String.self, forKey: .address)
+        about = try person.decode(String.self, forKey: .about)
+        registered = try person.decode(Date.self, forKey: .registered)
+        
+        
+        // Decode all the tags and tie to this entity
+        tags = try person.decode([String].self, forKey: .tags)
+        
         // Decode all the friends and tie to this entity
-        
-        tags = try values.decode([String].self, forKey: .tags)
-        friends = try values.decode([Friend].self, forKey: .friends)
+        friends = try person.decode([Friend].self, forKey: .friends)
+        //        for friend in self.friends {
+        //            print(friend.id)
+        //        }
         /*:
          https://www.hackingwithswift.com/forums/100-days-of-swiftui/day-61-coredata-milestone-project-unable-to-fetch-friend-data/5508
          let friends = try decoder.container(keyedBy: CodingKeys.self, , forKey: .friends)
@@ -100,20 +109,24 @@ class Person : Identifiable, Decodable {
     }
     
     func encode(to encoder: Encoder) throws {
-            var container = encoder.container(keyedBy: CodingKeys.self)
-            try container.encode(self.id, forKey: .id)
-            try container.encode(self.isActive, forKey: .isActive)
-            try container.encode(self.name, forKey: .name)
-            try container.encode(self.age, forKey: .age)
-            try container.encode(self.company, forKey: .company)
-            try container.encode(self.email, forKey: .email)
-            try container.encode(self.address, forKey: .address)
-            try container.encode(self.about, forKey: .about)
-            try container.encode(self.registered, forKey: .registered)
-            try container.encode(self.tags, forKey: .tags)
-            try container.encode(self.friends, forKey: .friends)
-        
-        }
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.id, forKey: .id)
+        try container.encode(self.isActive, forKey: .isActive)
+        try container.encode(self.name, forKey: .name)
+        try container.encode(self.age, forKey: .age)
+        try container.encode(self.company, forKey: .company)
+        try container.encode(self.email, forKey: .email)
+        try container.encode(self.address, forKey: .address)
+        try container.encode(self.about, forKey: .about)
+        try container.encode(self.registered, forKey: .registered)
+        try container.encode(self.tags, forKey: .tags)
+        try container.encode(self.friends, forKey: .friends)
+    }
+    
+}
+//            for friend in self.friends {
+//                print(friend.id)
+//            }
     
     /*:
      if let decodedAddresses = try? JSONDecoder().decode([Address].self, from: addressArray) {
@@ -124,7 +137,7 @@ class Person : Identifiable, Decodable {
      */
     
     
-}
+
 
 
 /*:
