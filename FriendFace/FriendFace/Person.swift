@@ -22,9 +22,9 @@ class Person : Identifiable, Decodable {
     var about : String
     var registered : Date
     var tags : [String]
+    var friends : [Friend]
+    //@Relationship(deleteRule: .cascade) var friends = [Friend]()
     
-    @Relationship(deleteRule: .cascade) var friends = [Friend]()
-    //var friends : [Friend]
     
     init(id: UUID, isActive: Bool, name: String, age: Int, company: String, email: String, address: String, about: String, registered: Date, tags: [String], friends: [Friend]) {
         self.id = id
@@ -67,6 +67,12 @@ class Person : Identifiable, Decodable {
     
     // https://www.hackingwithswift.com/books/ios-swiftui/adding-codable-conformance-for-published-properties
     //https://www.hackingwithswift.com/forums/swiftui/can-someone-explain-my-mistake-here/24252
+    
+    // Decode the date
+           // SEE: https://developer.apple.com/documentation/foundation/dateformatter#overview
+           // SEE: https://developer.apple.com/documentation/foundation/iso8601dateformatter
+           // SEE: https://makclass.com/posts/24-a-quick-example-on-iso8601dateformatter-and-sorted-by-function
+    
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -79,10 +85,35 @@ class Person : Identifiable, Decodable {
         address = try values.decode(String.self, forKey: .address)
         about = try values.decode(String.self, forKey: .about)
         registered = try values.decode(Date.self, forKey: .registered)
+        // Decode all the friends and tie to this entity
+        
         tags = try values.decode([String].self, forKey: .tags)
         friends = try values.decode([Friend].self, forKey: .friends)
+        /*:
+         https://www.hackingwithswift.com/forums/100-days-of-swiftui/day-61-coredata-milestone-project-unable-to-fetch-friend-data/5508
+         let friends = try decoder.container(keyedBy: CodingKeys.self, , forKey: .friends)
+         
+         id = try values.decode(UUID.self, forKey: .id)
+         name = try values.decode(String.self, forKey: .name)
+         */
         
     }
+    
+    func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(self.id, forKey: .id)
+            try container.encode(self.isActive, forKey: .isActive)
+            try container.encode(self.name, forKey: .name)
+            try container.encode(self.age, forKey: .age)
+            try container.encode(self.company, forKey: .company)
+            try container.encode(self.email, forKey: .email)
+            try container.encode(self.address, forKey: .address)
+            try container.encode(self.about, forKey: .about)
+            try container.encode(self.registered, forKey: .registered)
+            try container.encode(self.tags, forKey: .tags)
+            try container.encode(self.friends, forKey: .friends)
+        
+        }
     
     /*:
      if let decodedAddresses = try? JSONDecoder().decode([Address].self, from: addressArray) {

@@ -13,9 +13,17 @@
  []Before you start your download, check that your User array is empty so that you don’t keep starting the download every time the view is shown.
  try? modelContext.delete(model: Person.self)
  
- []start by designing your types: build a User struct with properties for name, age, company, and so on,
- [] then a Friend struct with id and name.
- [] dsed3After that, move onto some URLSession code to fetch the data and decode it into your types.
+ []start by designing your types: build a User STRUCT with properties for name, age, company, and so on,
+ [] then a Friend STRUCT with id and name.
+ []  After that, move onto some URLSession code to fetch the data and decode it into your types.
+ 
+ HINT:
+ 
+ Here's the tip: You need to make your User and Friend structs into @Model classes that conform to Codable. Doing that means adding custom Codable conformance: an initializer from a Decoder, and an encode(to:) method.
+[ ] READ these https://www.hackingwithswift.com/guide/ios-swiftui/5/2/key-points
+ 
+ Part 2 is to use @model --- I dont' read directions so i started there
+ https://www.hackingwithswift.com/100/swiftui/61
  
  * Advanced user solve example : https://medium.com/@viktormauzer/solving-friendface-100daysofswiftui-challenge-day-60-61-754309014448
  */
@@ -33,27 +41,32 @@ struct ContentView: View {
             
             NavigationView {
                 List(people) { person in
-                    HStack{
-                        Text("\(person.age)")
-                            .padding()
-                            .background(colorScheme == .dark ? .black : .white)
-                            //.background(.white)
-                            .clipShape(Circle())
-                            .frame(width: 70)
-                            .overlay(
-                                    Circle()
-                                        .stroke(person.isActive ? Color.green : Color.red, lineWidth: 2)
-                                )
-                            .padding([.top, .bottom, .trailing], 5)
-                        VStack(alignment: .leading){
-                            Text(person.name)
-                                .font(.headline)
-                            Text(person.isActive ? "Active" : "Offline")
-                                .font(.subheadline)
-                                .foregroundColor(person.isActive ? .green : .red)
-                        }
-                        
+                    NavigationLink{
+                        DetailView(person: person)
+                    } label: {
+                        HStack{
+                            Text("\(person.age)")
+                                .padding()
+                                .background(colorScheme == .dark ? .black : .white)
+                                //.background(.white)
+                                .clipShape(Circle())
+                                .frame(width: 70)
+                                .overlay(
+                                        Circle()
+                                            .stroke(person.isActive ? Color.green : Color.red, lineWidth: 2)
+                                    )
+                                .padding([.top, .bottom, .trailing], 5)
+                            VStack(alignment: .leading){
+                                Text(person.name)
+                                    .font(.headline)
+                                Text(person.isActive ? "Active" : "Offline")
+                                    .font(.subheadline)
+                                    .foregroundColor(person.isActive ? .green : .red)
+                            }
+                            
+                        } // HStack
                     }
+                   
                     
                 }
                 .navigationTitle("FriendFace")

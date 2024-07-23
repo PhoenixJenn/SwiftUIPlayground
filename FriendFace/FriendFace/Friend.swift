@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Friend : Decodable{
+class Friend : Codable , Identifiable {
     var id : UUID
     var name : String
     
@@ -29,4 +29,12 @@ class Friend : Decodable{
         id = try values.decode(UUID.self, forKey: .id)
         name = try values.decode(String.self, forKey: .name)
     }
+    
+    func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(self.id, forKey: .id)
+            try container.encode(self.name, forKey: .name)
+           
+        }
+    
 }
