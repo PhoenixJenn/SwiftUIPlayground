@@ -20,6 +20,14 @@
  []A box prompting users to select a photo, over which we’ll place their imported picture.
  []An “Intensity” slider that will affect how strongly we apply our Core Image filters, stored as a value from 0.0 to 1.0.
  []A sharing button to export the processed image from the app.
+ 
+ CHALLENGE
+ https://www.hackingwithswift.com/books/ios-swiftui/instafilter-wrap-up
+ Try making the Slider and Change Filter buttons disabled if there is no image selected.
+ Experiment with having more than one slider, to control each of the input keys you care about. For example, you might have one for radius and one for intensity.
+ Explore the range of available Core Image filters, and add any three of your choosing to the app.
+ 
+ 
  */
 import SwiftUI
 import CoreImage
