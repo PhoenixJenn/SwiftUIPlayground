@@ -11,7 +11,7 @@
  Change the minor number when they added features that don’t break any APIs.
  Change the major number when they do break APIs.
  This is why “Up to Next Major” works so well, because it should mean you get new bug fixes and features over time, but won’t accidentally switch to a version that breaks your code.
- 
+ https://www.hackingwithswift.com/books/ios-swiftui/adding-swift-package-dependencies-in-xcode
  */
 
 import SwiftUI
