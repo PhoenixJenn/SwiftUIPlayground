@@ -11,50 +11,55 @@
 
  */
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
-    enum LoadingState {
-        case loading, success, failed
-    }
-    @State private var loadingState = LoadingState.loading
+    @State private var locations = [MapLocation]()
+    @State private var selectedPlace: MapLocation?
+    let startPosition = MapCameraPosition.region(
+        MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 56, longitude: -3),
+            span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
+        )
+    )
     
     var body: some View {
-        Button("Read and Write") {
-            let data = Data("Test Message".utf8)
-            let url = URL.documentsDirectory.appending(path: "message.txt")
-
-            do {
-                try data.write(to: url, options: [.atomic, .completeFileProtection])
-                let input = try String(contentsOf: url)
-                print(input)
-            } catch {
-                print(error.localizedDescription)
+        Text("Hello World")
+        MapReader { proxy in
+            Map(initialPosition: startPosition) {
+                ForEach(locations) { location in
+                    Annotation(location.name, coordinate: location.coordinate) {
+                     
+                        Image(systemName: "star.circle")
+                            .resizable()
+                            .foregroundStyle(.red)
+                            .frame(width: 44, height: 44)
+                            .background(.white)
+                            .clipShape(.circle)
+                            .onLongPressGesture {
+                                selectedPlace = location
+                            }
+                    }
+                }
             }
+            .sheet(item: $selectedPlace) { place in
+                //Text(place.name)
+                EditView(location: place) { newLocation in
+                    if let index = locations.firstIndex(of: place) {
+                        locations[index] = newLocation
+                    }
+                }
+            }
+            
+                .onTapGesture { position in
+                    if let coordinate = proxy.convert(position, from: .local) {
+                        let newLocation = MapLocation(id: UUID(), name: "New location", description: "", latitude: coordinate.latitude, longitude: coordinate.longitude)
+                        locations.append(newLocation)
+                    }
+                }
         }
-//        if loadingState == .loading {
-//            LoadingView()
-//        } else if loadingState == .success {
-//            SuccessView()
-//        } else if loadingState == .failed {
-//            FailedView()
-//        }
-        switch loadingState {
-            case .loading:
-                LoadingView()
-            case .success:
-                SuccessView()
-            case .failed:
-                FailedView()
-        }
-        /*:
-         Where conditional views are particularly useful is when we want to show one of several different states, and if we plan it correctly we can keep our view code small and also easy to maintain – it’s a great way to start training your brain to think about SwiftUI architecture.
-         */
         
-//        if Bool.random() {
-//            Rectangle()
-//        } else {
-//            Circle()
-//        }
+        
         
     }
 }
@@ -63,21 +68,25 @@ struct ContentView: View {
     ContentView()
 }
 
-
-struct LoadingView: View {
-    var body: some View {
-        Text("Loading...")
+struct MapLocation: Codable, Equatable, Identifiable {
+    
+    var id: UUID
+    var name: String
+    var description: String
+    var latitude: Double
+    var longitude: Double
+    
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    /*:
+     Tip: If you wanted, you could wrap the static let example line with #if DEBUG and #endif to avoid it being built into your App Store releases.
+     */
+    static let example = MapLocation(id: UUID(), name: "Buckingham Palace", description: "Lit by over 40,000 lightbulbs.", latitude: 51.501, longitude: -0.141)
+    
+    static func ==(lhs: MapLocation, rhs: MapLocation) -> Bool {
+        lhs.id == rhs.id
     }
 }
 
-struct SuccessView: View {
-    var body: some View {
-        Text("Success!")
-    }
-}
-
-struct FailedView: View {
-    var body: some View {
-        Text("Failed.")
-    }
-}

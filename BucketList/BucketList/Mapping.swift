@@ -140,3 +140,4 @@ struct Location: Identifiable {
     var name: String
     var coordinate: CLLocationCoordinate2D
 }
+
