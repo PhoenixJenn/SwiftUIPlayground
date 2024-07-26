@@ -9,13 +9,18 @@
  Before we move on, here’s a small challenge for you: back in project 8 we looked at how to create a generic extension on Bundle that let us find, load, and decode any Codable data from our app bundle. Can you write something similar for the documents directory, perhaps making it an extension on FileManager?
  https://www.hackingwithswift.com/books/ios-swiftui/writing-data-to-the-documents-directory
 
+ Refactor to use MVVM design pattern
+ https://www.hackingwithswift.com/100/swiftui/72
+ 
  */
 import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    @State private var locations = [MapLocation]()
-    @State private var selectedPlace: MapLocation?
+    
+    @State private var viewModel = ViewModel()
+  
+
     let startPosition = MapCameraPosition.region(
         MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 56, longitude: -3),
@@ -27,7 +32,7 @@ struct ContentView: View {
         Text("Hello World")
         MapReader { proxy in
             Map(initialPosition: startPosition) {
-                ForEach(locations) { location in
+                ForEach(viewModel.locations) { location in
                     Annotation(location.name, coordinate: location.coordinate) {
                      
                         Image(systemName: "star.circle")
@@ -37,27 +42,25 @@ struct ContentView: View {
                             .background(.white)
                             .clipShape(.circle)
                             .onLongPressGesture {
-                                selectedPlace = location
+                                viewModel.selectedPlace = location
                             }
                     }
                 }
             }
-            .sheet(item: $selectedPlace) { place in
-                //Text(place.name)
-                EditView(location: place) { newLocation in
-                    if let index = locations.firstIndex(of: place) {
-                        locations[index] = newLocation
-                    }
+            .sheet(item: $viewModel.selectedPlace) { place in
+                
+                EditView(location: place) {
+                    viewModel.update(location: $0)
                 }
+
             }
-            
-                .onTapGesture { position in
-                    if let coordinate = proxy.convert(position, from: .local) {
-                        let newLocation = MapLocation(id: UUID(), name: "New location", description: "", latitude: coordinate.latitude, longitude: coordinate.longitude)
-                        locations.append(newLocation)
-                    }
+            .onTapGesture { position in
+                if let coordinate = proxy.convert(position, from: .local) {
+                    viewModel.addLocation(at: coordinate)
                 }
-        }
+            } //ontap
+
+        } // MapReader
         
         
         
