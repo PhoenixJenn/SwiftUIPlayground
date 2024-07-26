@@ -13,8 +13,14 @@ struct ContentView: View {
     let users = ["Tohru", "Yuki", "Kyo", "Momiji"]
 
     var body: some View {
-        
-       
+        NavigationView {
+            NavigationLink{
+                SchedLocalNotifications()
+            } label: {
+                Text("Send Notification")
+            }
+            
+        }
         
         EditButton()
         List(users, id: \.self, selection: $selection) { user in
