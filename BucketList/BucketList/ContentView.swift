@@ -29,38 +29,52 @@ struct ContentView: View {
     )
     
     var body: some View {
-        Text("Hello World")
-        MapReader { proxy in
-            Map(initialPosition: startPosition) {
-                ForEach(viewModel.locations) { location in
-                    Annotation(location.name, coordinate: location.coordinate) {
-                     
-                        Image(systemName: "star.circle")
-                            .resizable()
-                            .foregroundStyle(.red)
-                            .frame(width: 44, height: 44)
-                            .background(.white)
-                            .clipShape(.circle)
-                            .onLongPressGesture {
-                                viewModel.selectedPlace = location
-                            }
+        if viewModel.isUnlocked {
+            //https://www.hackingwithswift.com/books/ios-swiftui/locking-our-ui-behind-face-id 
+            Text("Hello World")
+            MapReader { proxy in
+                Map(initialPosition: startPosition) {
+                    ForEach(viewModel.locations) { location in
+                        Annotation(location.name, coordinate: location.coordinate) {
+                         
+                            Image(systemName: "star.circle")
+                                .resizable()
+                                .foregroundStyle(.red)
+                                .frame(width: 44, height: 44)
+                                .background(.white)
+                                .clipShape(.circle)
+                                .onLongPressGesture {
+                                    viewModel.selectedPlace = location
+                                }
+                        }
                     }
                 }
-            }
-            .sheet(item: $viewModel.selectedPlace) { place in
-                
-                EditView(location: place) {
-                    viewModel.update(location: $0)
-                }
+                .sheet(item: $viewModel.selectedPlace) { place in
+                    
+                    EditView(location: place) {
+                        viewModel.update(location: $0)
+                    }
 
-            }
-            .onTapGesture { position in
-                if let coordinate = proxy.convert(position, from: .local) {
-                    viewModel.addLocation(at: coordinate)
                 }
-            } //ontap
+                .onTapGesture { position in
+                    if let coordinate = proxy.convert(position, from: .local) {
+                        viewModel.addLocation(at: coordinate)
+                    }
+                } //ontap
 
-        } // MapReader
+            } // MapReader
+            
+            
+        } else {
+            Text("Hello World")
+            // button here
+            Button("Unlock Places", action: viewModel.authenticate)
+                .padding()
+                .background(.blue)
+                .foregroundStyle(.white)
+                .clipShape(.capsule)
+        }
+        
         
         
         
