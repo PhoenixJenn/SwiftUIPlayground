@@ -12,6 +12,16 @@
  Refactor to use MVVM design pattern
  https://www.hackingwithswift.com/100/swiftui/72
  
+ 
+ Challenge
+ []One of the best ways to learn is to write your own code as often as possible, so here are three ways you should try extending this app to make sure you fully understand what’s going on.
+
+ []Allow the user to switch map modes, between the standard mode and hybrid.
+ []Our app silently fails when errors occur during biometric authentication, so add code to show those errors in an alert.
+ []Create another view model, this time for EditView. What you put in the view model is down to you, but I would recommend leaving dismiss and onSave in the view itself – the former uses the environment, which can only be read by the view, and the latter doesn’t really add anything when moved into the model.
+ Tip: That last challenge will require you to make a State instance in your EditView initializer – remember to use an underscore with the property name!
+ 
+ 
  */
 import SwiftUI
 import MapKit
@@ -30,7 +40,7 @@ struct ContentView: View {
     
     var body: some View {
         if viewModel.isUnlocked {
-            //https://www.hackingwithswift.com/books/ios-swiftui/locking-our-ui-behind-face-id 
+            //https://www.hackingwithswift.com/books/ios-swiftui/locking-our-ui-behind-face-id
             Text("Hello World")
             MapReader { proxy in
                 Map(initialPosition: startPosition) {
