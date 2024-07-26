@@ -7,36 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		825FA79F2C53140700230DB5 /* BucketListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA79E2C53140700230DB5 /* BucketListApp.swift */; };
-		825FA7A12C53140700230DB5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7A02C53140700230DB5 /* ContentView.swift */; };
-		825FA7A32C53140900230DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825FA7A22C53140900230DB5 /* Assets.xcassets */; };
-		825FA7A62C53140900230DB5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825FA7A52C53140900230DB5 /* Preview Assets.xcassets */; };
-		825FA7AD2C53143B00230DB5 /* RampUpProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7AC2C53143B00230DB5 /* RampUpProjects.swift */; };
-		825FA7AF2C53376B00230DB5 /* Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7AE2C53376B00230DB5 /* Mapping.swift */; };
-		825FA7B12C533C8B00230DB5 /* Biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7B02C533C8B00230DB5 /* Biometrics.swift */; };
-		825FA7B32C533EE300230DB5 /* LoadingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7B22C533EE300230DB5 /* LoadingViews.swift */; };
-		825FA7B52C5342A400230DB5 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7B42C5342A400230DB5 /* EditView.swift */; };
-		825FA7B72C54323A00230DB5 /* WikiResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7B62C54323A00230DB5 /* WikiResults.swift */; };
-		825FA7B92C54398700230DB5 /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7B82C54398700230DB5 /* ContentView-ViewModel.swift */; };
+		825FA7C72C544A7200230DB5 /* AccessibilitySandboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7C62C544A7200230DB5 /* AccessibilitySandboxApp.swift */; };
+		825FA7C92C544A7200230DB5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7C82C544A7200230DB5 /* ContentView.swift */; };
+		825FA7CB2C544A7400230DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825FA7CA2C544A7400230DB5 /* Assets.xcassets */; };
+		825FA7CE2C544A7400230DB5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825FA7CD2C544A7400230DB5 /* Preview Assets.xcassets */; };
+		825FA7D52C54505600230DB5 /* More.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7D42C54505600230DB5 /* More.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		825FA79B2C53140700230DB5 /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		825FA79E2C53140700230DB5 /* BucketListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListApp.swift; sourceTree = "<group>"; };
-		825FA7A02C53140700230DB5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		825FA7A22C53140900230DB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		825FA7A52C53140900230DB5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		825FA7AC2C53143B00230DB5 /* RampUpProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RampUpProjects.swift; sourceTree = "<group>"; };
-		825FA7AE2C53376B00230DB5 /* Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapping.swift; sourceTree = "<group>"; };
-		825FA7B02C533C8B00230DB5 /* Biometrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Biometrics.swift; sourceTree = "<group>"; };
-		825FA7B22C533EE300230DB5 /* LoadingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViews.swift; sourceTree = "<group>"; };
-		825FA7B42C5342A400230DB5 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
-		825FA7B62C54323A00230DB5 /* WikiResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiResults.swift; sourceTree = "<group>"; };
-		825FA7B82C54398700230DB5 /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
+		825FA7C32C544A7200230DB5 /* AccessibilitySandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccessibilitySandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		825FA7C62C544A7200230DB5 /* AccessibilitySandboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilitySandboxApp.swift; sourceTree = "<group>"; };
+		825FA7C82C544A7200230DB5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		825FA7CA2C544A7400230DB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		825FA7CD2C544A7400230DB5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		825FA7D42C54505600230DB5 /* More.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = More.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		825FA7982C53140700230DB5 /* Frameworks */ = {
+		825FA7C02C544A7200230DB5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,44 +34,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		825FA7922C53140700230DB5 = {
+		825FA7BA2C544A7200230DB5 = {
 			isa = PBXGroup;
 			children = (
-				825FA79D2C53140700230DB5 /* BucketList */,
-				825FA79C2C53140700230DB5 /* Products */,
+				825FA7C52C544A7200230DB5 /* AccessibilitySandbox */,
+				825FA7C42C544A7200230DB5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		825FA79C2C53140700230DB5 /* Products */ = {
+		825FA7C42C544A7200230DB5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				825FA79B2C53140700230DB5 /* BucketList.app */,
+				825FA7C32C544A7200230DB5 /* AccessibilitySandbox.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		825FA79D2C53140700230DB5 /* BucketList */ = {
+		825FA7C52C544A7200230DB5 /* AccessibilitySandbox */ = {
 			isa = PBXGroup;
 			children = (
-				825FA79E2C53140700230DB5 /* BucketListApp.swift */,
-				825FA7B82C54398700230DB5 /* ContentView-ViewModel.swift */,
-				825FA7A02C53140700230DB5 /* ContentView.swift */,
-				825FA7B62C54323A00230DB5 /* WikiResults.swift */,
-				825FA7B42C5342A400230DB5 /* EditView.swift */,
-				825FA7B22C533EE300230DB5 /* LoadingViews.swift */,
-				825FA7AC2C53143B00230DB5 /* RampUpProjects.swift */,
-				825FA7AE2C53376B00230DB5 /* Mapping.swift */,
-				825FA7B02C533C8B00230DB5 /* Biometrics.swift */,
-				825FA7A22C53140900230DB5 /* Assets.xcassets */,
-				825FA7A42C53140900230DB5 /* Preview Content */,
+				825FA7C62C544A7200230DB5 /* AccessibilitySandboxApp.swift */,
+				825FA7C82C544A7200230DB5 /* ContentView.swift */,
+				825FA7D42C54505600230DB5 /* More.swift */,
+				825FA7CA2C544A7400230DB5 /* Assets.xcassets */,
+				825FA7CC2C544A7400230DB5 /* Preview Content */,
 			);
-			path = BucketList;
+			path = AccessibilitySandbox;
 			sourceTree = "<group>";
 		};
-		825FA7A42C53140900230DB5 /* Preview Content */ = {
+		825FA7CC2C544A7400230DB5 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				825FA7A52C53140900230DB5 /* Preview Assets.xcassets */,
+				825FA7CD2C544A7400230DB5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -91,39 +73,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		825FA79A2C53140700230DB5 /* BucketList */ = {
+		825FA7C22C544A7200230DB5 /* AccessibilitySandbox */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 825FA7A92C53140900230DB5 /* Build configuration list for PBXNativeTarget "BucketList" */;
+			buildConfigurationList = 825FA7D12C544A7400230DB5 /* Build configuration list for PBXNativeTarget "AccessibilitySandbox" */;
 			buildPhases = (
-				825FA7972C53140700230DB5 /* Sources */,
-				825FA7982C53140700230DB5 /* Frameworks */,
-				825FA7992C53140700230DB5 /* Resources */,
+				825FA7BF2C544A7200230DB5 /* Sources */,
+				825FA7C02C544A7200230DB5 /* Frameworks */,
+				825FA7C12C544A7200230DB5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = BucketList;
-			productName = BucketList;
-			productReference = 825FA79B2C53140700230DB5 /* BucketList.app */;
+			name = AccessibilitySandbox;
+			productName = AccessibilitySandbox;
+			productReference = 825FA7C32C544A7200230DB5 /* AccessibilitySandbox.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		825FA7932C53140700230DB5 /* Project object */ = {
+		825FA7BB2C544A7200230DB5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					825FA79A2C53140700230DB5 = {
+					825FA7C22C544A7200230DB5 = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
-			buildConfigurationList = 825FA7962C53140700230DB5 /* Build configuration list for PBXProject "BucketList" */;
+			buildConfigurationList = 825FA7BE2C544A7200230DB5 /* Build configuration list for PBXProject "AccessibilitySandbox" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -131,49 +113,43 @@
 				en,
 				Base,
 			);
-			mainGroup = 825FA7922C53140700230DB5;
-			productRefGroup = 825FA79C2C53140700230DB5 /* Products */;
+			mainGroup = 825FA7BA2C544A7200230DB5;
+			productRefGroup = 825FA7C42C544A7200230DB5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				825FA79A2C53140700230DB5 /* BucketList */,
+				825FA7C22C544A7200230DB5 /* AccessibilitySandbox */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		825FA7992C53140700230DB5 /* Resources */ = {
+		825FA7C12C544A7200230DB5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				825FA7A62C53140900230DB5 /* Preview Assets.xcassets in Resources */,
-				825FA7A32C53140900230DB5 /* Assets.xcassets in Resources */,
+				825FA7CE2C544A7400230DB5 /* Preview Assets.xcassets in Resources */,
+				825FA7CB2C544A7400230DB5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		825FA7972C53140700230DB5 /* Sources */ = {
+		825FA7BF2C544A7200230DB5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				825FA7AF2C53376B00230DB5 /* Mapping.swift in Sources */,
-				825FA7A12C53140700230DB5 /* ContentView.swift in Sources */,
-				825FA7B72C54323A00230DB5 /* WikiResults.swift in Sources */,
-				825FA79F2C53140700230DB5 /* BucketListApp.swift in Sources */,
-				825FA7B92C54398700230DB5 /* ContentView-ViewModel.swift in Sources */,
-				825FA7B32C533EE300230DB5 /* LoadingViews.swift in Sources */,
-				825FA7B52C5342A400230DB5 /* EditView.swift in Sources */,
-				825FA7AD2C53143B00230DB5 /* RampUpProjects.swift in Sources */,
-				825FA7B12C533C8B00230DB5 /* Biometrics.swift in Sources */,
+				825FA7C92C544A7200230DB5 /* ContentView.swift in Sources */,
+				825FA7D52C54505600230DB5 /* More.swift in Sources */,
+				825FA7C72C544A7200230DB5 /* AccessibilitySandboxApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		825FA7A72C53140900230DB5 /* Debug */ = {
+		825FA7CF2C544A7400230DB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -236,7 +212,7 @@
 			};
 			name = Debug;
 		};
-		825FA7A82C53140900230DB5 /* Release */ = {
+		825FA7D02C544A7400230DB5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -292,18 +268,17 @@
 			};
 			name = Release;
 		};
-		825FA7AA2C53140900230DB5 /* Debug */ = {
+		825FA7D22C544A7400230DB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BucketList/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"AccessibilitySandbox/Preview Content\"";
 				DEVELOPMENT_TEAM = 3TFDS5G89L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please authenticate yourself to unlock your places.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -314,7 +289,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.augmentyourexperience.BucketList;
+				PRODUCT_BUNDLE_IDENTIFIER = com.augmentyourexperience.AccessibilitySandbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -322,18 +297,17 @@
 			};
 			name = Debug;
 		};
-		825FA7AB2C53140900230DB5 /* Release */ = {
+		825FA7D32C544A7400230DB5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BucketList/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"AccessibilitySandbox/Preview Content\"";
 				DEVELOPMENT_TEAM = 3TFDS5G89L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please authenticate yourself to unlock your places.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -344,7 +318,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.augmentyourexperience.BucketList;
+				PRODUCT_BUNDLE_IDENTIFIER = com.augmentyourexperience.AccessibilitySandbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -355,25 +329,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		825FA7962C53140700230DB5 /* Build configuration list for PBXProject "BucketList" */ = {
+		825FA7BE2C544A7200230DB5 /* Build configuration list for PBXProject "AccessibilitySandbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				825FA7A72C53140900230DB5 /* Debug */,
-				825FA7A82C53140900230DB5 /* Release */,
+				825FA7CF2C544A7400230DB5 /* Debug */,
+				825FA7D02C544A7400230DB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		825FA7A92C53140900230DB5 /* Build configuration list for PBXNativeTarget "BucketList" */ = {
+		825FA7D12C544A7400230DB5 /* Build configuration list for PBXNativeTarget "AccessibilitySandbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				825FA7AA2C53140900230DB5 /* Debug */,
-				825FA7AB2C53140900230DB5 /* Release */,
+				825FA7D22C544A7400230DB5 /* Debug */,
+				825FA7D32C544A7400230DB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 825FA7932C53140700230DB5 /* Project object */;
+	rootObject = 825FA7BB2C544A7200230DB5 /* Project object */;
 }
