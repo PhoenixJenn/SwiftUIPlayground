@@ -11,6 +11,10 @@
 		825FA6F72C4B270200230DB5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA6F62C4B270200230DB5 /* ContentView.swift */; };
 		825FA6F92C4B270300230DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825FA6F82C4B270300230DB5 /* Assets.xcassets */; };
 		825FA6FC2C4B270300230DB5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825FA6FB2C4B270300230DB5 /* Preview Assets.xcassets */; };
+		825FA7032C4B277600230DB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7022C4B277600230DB5 /* User.swift */; };
+		825FA7052C4B27BA00230DB5 /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7042C4B27BA00230DB5 /* EditUserView.swift */; };
+		825FA7072C4B3EFE00230DB5 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7062C4B3EFE00230DB5 /* UsersView.swift */; };
+		825FA7092C4B472F00230DB5 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA7082C4B472F00230DB5 /* Job.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		825FA6F62C4B270200230DB5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		825FA6F82C4B270300230DB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		825FA6FB2C4B270300230DB5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		825FA7022C4B277600230DB5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		825FA7042C4B27BA00230DB5 /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
+		825FA7062C4B3EFE00230DB5 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		825FA7082C4B472F00230DB5 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +60,11 @@
 			isa = PBXGroup;
 			children = (
 				825FA6F42C4B270200230DB5 /* SwiftDataProjectApp.swift */,
+				825FA7042C4B27BA00230DB5 /* EditUserView.swift */,
 				825FA6F62C4B270200230DB5 /* ContentView.swift */,
+				825FA7062C4B3EFE00230DB5 /* UsersView.swift */,
+				825FA7022C4B277600230DB5 /* User.swift */,
+				825FA7082C4B472F00230DB5 /* Job.swift */,
 				825FA6F82C4B270300230DB5 /* Assets.xcassets */,
 				825FA6FA2C4B270300230DB5 /* Preview Content */,
 			);
@@ -137,8 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825FA7072C4B3EFE00230DB5 /* UsersView.swift in Sources */,
+				825FA7092C4B472F00230DB5 /* Job.swift in Sources */,
 				825FA6F72C4B270200230DB5 /* ContentView.swift in Sources */,
+				825FA7052C4B27BA00230DB5 /* EditUserView.swift in Sources */,
 				825FA6F52C4B270200230DB5 /* SwiftDataProjectApp.swift in Sources */,
+				825FA7032C4B277600230DB5 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
