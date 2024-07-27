@@ -19,6 +19,8 @@ struct ContentView: View {
             }
             
         }
+        Text("Once your notification has been added press Cmd+L in the simulator to lock the screen.")
+         
         
         TabView {
             ProspectsView(filter: .none)
