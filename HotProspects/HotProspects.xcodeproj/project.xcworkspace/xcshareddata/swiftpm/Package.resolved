@@ -1,0 +1,24 @@
+{
+  "originHash" : "9e29a9a5fc2c1fc6d48600076376661127398b35ecef744080639b4cadd1dd17",
+  "pins" : [
+    {
+      "identity" : "codescanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/CodeScanner",
+      "state" : {
+        "revision" : "34da57fb63b47add20de8a85da58191523ccce57",
+        "version" : "2.5.0"
+      }
+    },
+    {
+      "identity" : "samplepackage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/SamplePackage",
+      "state" : {
+        "revision" : "f34f8498db05cf519000a9e5a6a14872ccc69ada",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}
